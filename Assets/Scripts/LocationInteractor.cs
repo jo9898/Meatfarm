@@ -2,14 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class LocationInteractor : MonoBehaviour
 {
-    // Liebe Grüße an Valli
-    private void OnTriggerEnter(Collider other)
+    private IInteractable currentInteractable;
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            currentInteractable?.Interact();
+        }
+    }
+    private void OnTriggerStay(Collider other)
     {
         if (other.TryGetComponent<IInteractable>(out var interactable))
         {
-            interactable.Interact();
+            currentInteractable = interactable;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.TryGetComponent<IInteractable>(out var interacable))
+        {
+            if (interacable == currentInteractable) 
+            {
+                currentInteractable = null;
+            }
         }
     }
 }
