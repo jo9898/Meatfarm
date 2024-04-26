@@ -16,6 +16,7 @@ public class SceneOpenerButton : MonoBehaviour
 
 private void LoadScene()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(buildIndex);
     }
 }

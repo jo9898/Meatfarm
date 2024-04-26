@@ -11,7 +11,13 @@ public class LocationInteractor : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.E))
         {
-            currentInteractable?.Interact();
+            try
+            {
+                currentInteractable.Interact();
+            }
+            catch 
+            {
+            }
         }
     }
     private void OnTriggerStay(Collider other)

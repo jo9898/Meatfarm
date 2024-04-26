@@ -1,4 +1,6 @@
-Priest: "Another lost sheep travelled the veal. Dont you worry, I provide guidance for all troubled minds!"
+# speaker: Priest
+
+ "Another lost sheep travelled the veal. Dont you worry, I provide guidance for all troubled minds!"
 
 * "What is this place?"
     -> WhatIsLocation
@@ -10,13 +12,13 @@ Priest: "Another lost sheep travelled the veal. Dont you worry, I provide guidan
     -> Horns 
 
 == WhatIsLocation ==
-Priest: Dear sheep does not see the loan its walking on! This is where the sheperd lets you feed.
+ Dear sheep does not see the loan its walking on! This is where the sheperd lets you feed.
 Here youre protected. But do not dare to leave the craddle, there are eyes lurking beyond the fence.
     -> Glue
 
 
 == IntroductionPriest ==
-Priest: Oh, I recognize a sheep when i meet one! Pour lost one, driven by the urge to understand...but dont be worried! 
+ Oh, I recognize a sheep when i meet one! Pour lost one, driven by the urge to understand...but dont be worried! 
 I'm the wind to blow your sails and the footsteps you find on your path. 
     -> Glue
 
@@ -26,7 +28,7 @@ So if you dont want to get lost you need to sense your way and thus you need cla
 
 
 == Horns ==
-Priest: Ah, so this sheep got some horns! Just what this place is lacking of! I must encourage your attitude!
+ Ah, so this sheep got some horns! Just what this place is lacking of! I must encourage your attitude!
 Such free Spirit must dare to find clarity.
     -> Quest
 
