@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using DG.Tweening;
 using Ink.Runtime;
 using TMPro;
 using UnityEngine;
@@ -171,6 +172,11 @@ public class StoryView : MonoBehaviour
         {
             choice.Select();
         }
+        choice.transform
+            .DOScale(1f, 0.4f)
+            .SetEase(Ease.OutBack)
+            .From(0f)
+            .SetDelay(index * 0.1f);
 
         var choiceText = choice.GetComponentInChildren<TextMeshProUGUI>();
         choiceText.text = text;
