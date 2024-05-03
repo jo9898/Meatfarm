@@ -6,8 +6,10 @@ using System.Runtime.CompilerServices;
 using DG.Tweening;
 using Ink.Runtime;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SearchService;
 using UnityEngine.UI;
 
 public class StoryView : MonoBehaviour
@@ -19,6 +21,7 @@ public class StoryView : MonoBehaviour
     [SerializeField] private TextMeshProUGUI storyText;
     [SerializeField] private TextMeshProUGUI speakerName;
     [SerializeField] private Button buttonPrefab;
+    [SerializeField] private QuestsConfig questConfig;
     [SerializeField] private GameObject normalHudGroup;
     [SerializeField] private List<SpeakerConfig> speakerConfigs;
     [SerializeField] private Image speakerImage;
@@ -70,7 +73,7 @@ public class StoryView : MonoBehaviour
             text = text.Trim();
             // Display the text on screen!
             CreateContentView(text);
-            // HandleTags(); //TODO: tags kommen später
+            HandleTags();
         }
 
         if (story.currentChoices.Count > 0)
@@ -91,7 +94,7 @@ public class StoryView : MonoBehaviour
     }
 
 
-    /* TODO: add later
+    
     private void HandleTags()
     {
         if (story.currentTags.Count <= 0)
@@ -105,21 +108,18 @@ public class StoryView : MonoBehaviour
             {
                 var questName = currentTag.Split(' ')[1];
                 var quest = questConfig.quests.First(q => q.GetId() == questName);
-                GameState.AddQuest(quest);
-                FindObjectOfType<QuestLogView>().ShowActiveQuests();
+                GameState.StartQuest(quest);
+                FindObjectOfType<QuestLogView>(true).ShowActiveQuests();
             }
 
             if (currentTag.Contains("removeQuest"))
             {
                 var questName = currentTag.Split(' ')[1];
-                var quests = GameState.GetActiveQuests();
-                var quest = quests.First(q => q.GetId() == questName);
-                GameState.RemoveQuest(quest);
-                FindObjectOfType<QuestLogView>().ShowActiveQuests();
+                GameState.RemoveQuest(questName);
+                FindObjectOfType<QuestLogView>(true).ShowActiveQuests();
             }
         }
     }
-    */
 
     private void OnClickChoiceButton(Choice choice)
     {
