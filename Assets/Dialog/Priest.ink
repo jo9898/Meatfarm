@@ -12,30 +12,54 @@
 * "I like to chose my own path"
     -> Horns 
 
-=== WhatIsLocation ===
+
+
+
+
+== WhatIsLocation ==
  Dear sheep does not see the loan its walking on! This is where the sheperd lets you feed.
 Here youre protected. But do not dare to leave the craddle, there are eyes lurking beyond the fence.
+
+* "Test"
     -> Glue
 
 
-=== IntroductionPriest ===
+
+
+== IntroductionPriest ==
  Oh, I recognize a sheep when i meet one! Pour lost one, driven by the urge to understand...but dont be worried! 
 I'm the wind to blow your sails and the footsteps you find on your path. 
+
+* "Test"
     -> Glue
 
-=== Glue ===
+
+
+
+== Glue ==
 So if you dont want to get lost you need to sense your way and thus you need clarity!
+
+* "Test"
     -> Quest
 
 
-=== Horns ===
+
+
+
+== Horns ==
  Ah, so this sheep got some horns! Just what this place is lacking of! I must encourage your attitude!
 Such free Spirit must dare to find clarity.
+
+* "Test"
     -> Quest
 
-=== Quest ===
+
+
+
+
+== Quest ==
 Luckily for you i know just the right person to help you!
 
-# addQuest("claritySearch")
 
 ->END
+# EXTERNAL addQuest("claritySearch")

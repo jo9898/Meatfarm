@@ -49,6 +49,11 @@ public class StoryView : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
 
+        foreach (var quest in GameState.GetCompletableQuests())
+        {
+            story.variablesState["finished_"+quest.Quest.GetId().ToLower()] = true;
+        }
+
         ShowStory();
     }
 
@@ -97,7 +102,7 @@ public class StoryView : MonoBehaviour
     
     private void HandleTags()
     {
-        if (story.currentTags.Count <= 0)
+        if (story.currentTags.Count < 1)
         {
             return;
         }

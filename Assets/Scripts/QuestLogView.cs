@@ -10,6 +10,7 @@ public class QuestLogView : MonoBehaviour
 
     public void ShowActiveQuests()
     {
+        return;
         foreach (Transform child in questsHolder)
         {
             Destroy(child.gameObject);
