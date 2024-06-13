@@ -30,9 +30,9 @@ public class LocationInteractor : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.TryGetComponent<IInteractable>(out var interacable))
+        if (other.TryGetComponent<IInteractable>(out var interactable))
         {
-            if (interacable == currentInteractable) 
+            if (interactable == currentInteractable) 
             {
                 currentInteractable = null;
             }
