@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{919b4723-5c0c-417c-99c4-c77cebc3e7a0}">
+		<property name="assetPath">
+			<value>SFX/SFX/Environment/atmo-swamp-swamp-oneshot-bubble-02.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>1.4219791666666666</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{84fa4b84-f4b2-4178-9c73-227fd678a014}</destination>
+		</relationship>
+	</object>
+</objects>

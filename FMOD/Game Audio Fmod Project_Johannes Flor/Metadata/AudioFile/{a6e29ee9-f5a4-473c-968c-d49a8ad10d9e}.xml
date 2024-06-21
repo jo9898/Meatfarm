@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{a6e29ee9-f5a4-473c-968c-d49a8ad10d9e}">
+		<property name="assetPath">
+			<value>Atmos/Atmos/Weather/ATMO_Weather_atmo-generic-screaming-storm-loop-01.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>20.120999999999999</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{84fa4b84-f4b2-4178-9c73-227fd678a014}</destination>
+		</relationship>
+	</object>
+</objects>

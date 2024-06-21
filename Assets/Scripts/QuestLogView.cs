@@ -10,7 +10,6 @@ public class QuestLogView : MonoBehaviour
 
     public void ShowActiveQuests()
     {
-        return;
         foreach (Transform child in questsHolder)
         {
             Destroy(child.gameObject);
@@ -19,6 +18,10 @@ public class QuestLogView : MonoBehaviour
         var activeQuests = GameState.GetActiveQuests();
         foreach (var quest in activeQuests)
         {
+            if (quest.Status == QuestStatus.Completed)
+            {
+                continue;
+            }
             var questView = Instantiate(questViewPrefab, questsHolder);
             questView.Set(quest.Quest);
         }

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{2f3acfd0-001a-475d-9068-a97b8a051811}">
+		<property name="assetPath">
+			<value>Atmos/Atmos/Day/ATMO_DAY_ES_Beach 1 - SFX Producer.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>130.74133333333333</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{84fa4b84-f4b2-4178-9c73-227fd678a014}</destination>
+		</relationship>
+	</object>
+</objects>

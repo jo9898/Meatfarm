@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{3a86e9a0-8323-4855-a15e-004ab21fcdc7}">
+		<property name="assetPath">
+			<value>SFX/SFX/Animals/animal-bat-bat-wingflap-01.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.75600000000000001</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{84fa4b84-f4b2-4178-9c73-227fd678a014}</destination>
+		</relationship>
+	</object>
+</objects>

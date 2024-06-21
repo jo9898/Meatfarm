@@ -1,29 +1,289 @@
 #speaker: Lamb
 
-Sheep: "Haaa, cant you see I'm busy?"
+/*"Haaa, can't you see I'm busy?"
+*   Continue
+    -> Choices
 
-* "Put that mop down before you poke out an eye.."
+
+    === Choices ===
+*   Put that mop down before you poke someone's eye out!
     -> Mop_Down
-
-* "Hey, do you know about that strange lady with the hat of tinfoil?"
+    +   Spotted any items through the holes in the floor?
+    -> Items
++   Hey, do you know anything about that strange woman with the hat of tinfoil?
     -> The_Priest
 
-* "I was told you can tell me what this place is about?"
-    -> Clarity
 
-== The_Priest ==
-Sheep: "Dont you use that foul language on HER HIGHNESS! Her voice is the rustle in the gras, making the words of the wind comprehensabble for human ears. 
-Hers is the burden to spread the word of the great goddes Alu between all the fringe folk in this place."
-    -> End
 
-== Mop_Down ==
+    === Items ===
+"Not yet. I'm looking for my hat of tinfoil. You know, it's the sign of my devotion to Alumminia."
++   I just remembered, the priest was asking for you!
+    -> Request
+*   It's' your hat?
+    -> Sure
+
+
+    === Sure ===
+"Whom else should it belong to?"
+*   The Conspiracist told me it's his.
+    -> Maggot
+
+
+    === Maggot ===
+"This maggot! He must be jealous of Alumminia's affection!"
+*   Continue
+    -> Items
+
+
+
+    === Request ===
+"You-Your Highness?! Are you sure?"
++   Yes
+    -> Thanks
++   No
+    -> DontJoke
+
+
+    === Thanks ===
+"Thank you for the message, now excuse me!"
+    -> END
+
+    === DontJoke ===
+"Even I tell better jokes!"
++   Continue
+    -> Choices
+
+
+    === The_Priest ===
+"Don't you use that foul language on HER HIGHNESS! Her voice is the rustle in the gras, making the words of the wind comprehensible for human ears.
++   And the wind told her you should mob the floor?
+    -> DamnRight
++   Ahem, maybe you should try making your own decisions. 
+    -> MyDecision
+
+
+    === MyDecision ===
+"My decision is to follow the word of Alumminia!"
++   Continue
+    -> Choices
+
+
+    === DamnRight ===
+"Alumminia's will is not to question!"
++   Alu told me, you should try some humor.
+    -> Joke
+
+
+    === Joke ===
+"A Horse cwalks into a bar. The barman says,'funny! Never saw a lasagna walking into my bar!' So, the horse:'heh, never got a drink served by a heap of dogfood either!'"
++   Wait what?
+    -> WaitWhat
+
+
+    === WaitWhat ===
+"That's what my brother told me, when I came here. It's funny, right? That barman must have looked like a mess, haha"
++   Who's your Brother?
+    -> Brother
+
+
+    === Brother ===
+"Wolf. The person in the lobby? You couldn't have missed him!"
++   Continue
+    -> Choices
+
+
+
+    === Mop_Down ===
 Sheep: "Step back, i have to work"
-    //guiding to line below after follow up question
-+ ok
-Sheep: "I cant see the path. I do need clarity. The priestes told me by cleansing this well of pollution, im getting closer to clarity."
--> End
+*   Okay, let's just have a small chitchat then.
+    -> Choices
 
 
-== Clarity ==
-Sheep: "This is the harbour of lost souls. 
--> End
+
+/*
+{QuestinProgress_Bait}
+
+"Hello"
+*   [Continue]
+    -> JustHello
+
+    === JustHello ===
++   Hey, are you mad, because I gave that hat to the Conspiracist?
+    -> Alumminia
++   Where was that room again?
+    -> FactoryRoom
+
+
+    === FactoryRoom ===
+"Its the door, all the way down the corridor, next to the factory entry."
++   [Continue]
+    ->JustHello
+
+
+*/
+
+
+
+
+
+
+
+/*
+{QuestinProgress_Hide the Nob}
+
+"Hello"
+*   [Hey!]
+    -> Choices4
+
+
+    === Choices4 ===
+*   Lets talk about Nob.
+    -> Nob
+*   Hey, are you mad, because I gave that hat to the Conspiracy Theorist?
+    -> Alumminia
+
+
+    === Nob ===
+"Argh! This plague! I dont like to talk about him!"
+*   Why not?
+    -> HesJust
+
+
+    === HesJust ===
+"I dont wanne bore you with my problems."
+*   I get some "I really dont wanne, but i wanne" vibes here.
+    -> Problems
+
+
+    === Problems ===
+"I am starving! He's taking eating as competition and ... he's a bully!!"
+*   I am with you.
+    -> Problems2
+*   and?...
+    -> Rude1
+
+
+    === Rude1 ===
+"Have you ever not eaten for several days??
+*   [Continue]
+    -> Problems2
+
+
+    === Problems2 ===
+"When there's time for lunch he pushes away everybody, but the biggest. Domminating that trough like he's a boar in the puddle!"
+*   Son, i'm listening.
+    -> Problems3
+*   A buh buh buh
+    -> Rude2
+
+
+    === Rude2 ===
+"HEY! YOU wanted me to talk, so listen, turtelneck!"
+*   Ouch!
+    -> Problem3
+
+    === Problems3 ===
+"Usually he's quite nice, but as soon as there's food on the plate... . Well long story short, I had to come up with a plan!"
+*   Thats right. Dont let people push you around!
+    -> Problem4
+*   -Push him-
+    -> What?
+
+
+    === What? ===
+"Outch, what?..... Oh your a bad person. May Alumminia be generous with you!"
+*   Im sorry, with age came these uncontrolled movements you know? 
+    -> HmOkay
+*   -Push him again-
+    -> THATSIT
+
+
+    === THATSIT ===
+"You are no help for nobody! The day you reached retirement was a bless for you collegues and a curse for all others! Your ignorant, gave my hat away, pushing others around like you would mather! But YOU DONT!"
+    -> END
+
+
+    === HmOkay ===
+"Hm, well. I will forgive you, JUST ONCE!"
+*   [Continue]
+    -> WhereWas
+
+
+    === WhereWas ===
+"So where was I?...."
+*   Continue
+    -> Problem4
+
+
+    === Problem4 ===
+"I started to collect leftovers where ever I found them. Now if im hungry, I just place them in the room, next to the factory entrance. Then I lock him up, as soon as hes falling for the food!"
+*   Do you maybe have some leftovers for me? 
+    -> TheTrick
+
+
+    === TheTrick ===
+"Wait, what are you gonna do with that?"
+*   I'll lure him into the room, by myself, this time.
+    -> Susspicious
+
+
+    === Susspicious ===
+"Hm, you really havn't done anything to make me trust you. It would spare me the adrenalin to get caught though..."
+*   Hey, I know, you're a good person.
+    -> GoodPerson
+*   See, you already gave the reason.
+    -> IGuess
+
+
+    === GoodPerson ===
+"This..was actually a nice. Thank you. I share my baits with you."
+/* INVISIBLE #addQuest_Bait
+    -> END 
+
+
+    === IGuess ===
+"Hm yeah. Here's the bait. Now go and do your work."
+ INVISIBLE #addQuest_Bait
+    -> END */
+
+
+/*
+    === Alumminia ===
+"You may have taken the sign of my worship, but the priest told me, I'm still blessed with Alumminias affection."
+*   [Continue]
+    -> Choices4
+    */
+
+
+
+//{QuestinProgress_steal_accesscard}
+
+"A Willchoker! That's what is hunting my nightmares. To have no free will!"
+*   [Continue] "Damn, I miss my tinfoil hat! It would protect me from the Willchokers.."
+    -> Choices5
+
+
+    === Choices5 ===
+*   Sometimes, no free will means incredible dance-moves, Yiha!
+    -> DanceMoves
+*   Didn't thought you much of a pioneer in decision-making.
+    -> Pioneer
+*   Bye
+    ->  Bye
+
+
+    === DanceMoves ===
+"The effort is often worth the pain."
+*   [Continue] "Thats why I always give 50%!"
+    -> Choices5
+
+
+    === Pioneer ===
+"Dont think of you as a intoxicating person, too!"
+*   [Continue] "Any more trash you wanne drop?"
+    -> Choices5
+
+
+    === Bye ===
+"May Alluminia bless you pour soul"
+    -> END

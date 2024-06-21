@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="DataFile" id="{52bef518-ff3d-40f5-ba0c-e3d7b8540e2d}">
+		<property name="assetPath">
+			<value>Music/Ost_Flowergarden/Media/Orchestral Melody.wav.reapeaks</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{84fa4b84-f4b2-4178-9c73-227fd678a014}</destination>
+		</relationship>
+	</object>
+</objects>

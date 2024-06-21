@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="DAWAsset" id="{6a2ccd22-ccd0-4952-8d5b-551b1176ad90}">
+		<property name="assetPath">
+			<value>Dialoge/Synth Vocals.rpp.link/Synth Vocals Talking Droid.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>6.5</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{84fa4b84-f4b2-4178-9c73-227fd678a014}</destination>
+		</relationship>
+		<relationship name="project">
+			<destination>{3f194536-f34e-4b76-9210-980fa8762f0d}</destination>
+		</relationship>
+	</object>
+</objects>

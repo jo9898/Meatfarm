@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="DAWProject" id="{d418ab98-e8ba-4792-86b5-1b9a3999aac5}">
+		<property name="assetPath">
+			<value>Dialoge/Parasprache Recording.rpp.link/</value>
+		</property>
+		<property name="dawProjectPath">
+			<value>C:/Users/hanse/Music/Htk Game Audio SoSe 2024/Parasprache Reaper Template/Parasprache Recording.rpp</value>
+		</property>
+		<property name="renderedAssetsPath">
+			<value>Render</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{84fa4b84-f4b2-4178-9c73-227fd678a014}</destination>
+		</relationship>
+	</object>
+</objects>
