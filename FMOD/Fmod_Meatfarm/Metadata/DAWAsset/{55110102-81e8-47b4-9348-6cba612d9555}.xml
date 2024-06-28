@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="DAWAsset" id="{55110102-81e8-47b4-9348-6cba612d9555}">
+		<property name="assetPath">
+			<value>Dialoge/Parasprache Recording.rpp.link/Parasprache_männlich_Überraschung1.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>0.62519274376417233</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{84fa4b84-f4b2-4178-9c73-227fd678a014}</destination>
+		</relationship>
+		<relationship name="project">
+			<destination>{d418ab98-e8ba-4792-86b5-1b9a3999aac5}</destination>
+		</relationship>
+	</object>
+</objects>

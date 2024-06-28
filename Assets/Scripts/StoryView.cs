@@ -21,7 +21,6 @@ public class StoryView : MonoBehaviour
     [SerializeField] private TextMeshProUGUI storyText;
     [SerializeField] private TextMeshProUGUI speakerName;
     [SerializeField] private Button buttonPrefab;
-    [SerializeField] private QuestsConfig questConfig;
     [SerializeField] private GameObject normalHudGroup;
     [SerializeField] private List<SpeakerConfig> speakerConfigs;
     [SerializeField] private Image speakerImage;
@@ -32,12 +31,20 @@ public class StoryView : MonoBehaviour
         public string name;
         public Sprite sprite;
     }
-    // TODO add later [SerializeField] private QuestsConfig questConfig;
+
+    private List<IQuest> _quests;
 
     private void Awake()
     {
         DestroyOldChoices();
         gameObject.SetActive(false);
+
+        CollectionQuest[] collectionQuests = Resources.LoadAll<CollectionQuest>("Quests");
+        _quests = new List<IQuest>();
+        foreach (var collectionQuest in collectionQuests)
+        {
+            _quests.Add(collectionQuest);
+        }
     }
 
     public void StartStory(TextAsset textAsset)
@@ -49,9 +56,19 @@ public class StoryView : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
 
+        foreach (var quest in GameState.GetCompletedQuests())
+        {
+            story.variablesState["completed_"+quest.Quest.GetId().ToLower()] = true;
+        }
+
         foreach (var quest in GameState.GetCompletableQuests())
         {
-            story.variablesState["finished_"+quest.Quest.GetId().ToLower()] = true;
+            story.variablesState["completable" + quest.Quest.GetId().ToLower()] = true;
+        }
+
+        foreach (var quest in GameState.GetActiveQuests())
+        {
+            story.variablesState["active_" + quest.Quest.GetId().ToLower()] = true;
         }
 
         ShowStory();
@@ -112,7 +129,7 @@ public class StoryView : MonoBehaviour
             if (currentTag.Contains("addQuest"))
             {
                 var questName = currentTag.Split(' ')[1];
-                var quest = questConfig.quests.First(q => q.GetId() == questName);
+                var quest = _quests.First(q => q.GetId().ToLower() == questName.ToLower());
                 GameState.StartQuest(quest);
                 FindObjectOfType<QuestLogView>(true).ShowActiveQuests();
             }

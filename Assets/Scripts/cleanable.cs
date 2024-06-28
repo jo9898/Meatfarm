@@ -31,6 +31,7 @@ public class Cleanable : MonoBehaviour, IInteractable
     IEnumerator waiter()
     {
         yield return new WaitForSeconds(1);
+        //GameState.AddItem(type, amount);
         Destroy(this.gameObject);
     }
 

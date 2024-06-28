@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="EncodableAsset" id="{00b17c62-7e64-4b7d-ba7f-1c07e40c30e5}">
+		<property name="assetPath">
+			<value>Music/ES_Waltz of the Dead - Mike Franklyn/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{84fa4b84-f4b2-4178-9c73-227fd678a014}</destination>
+		</relationship>
+	</object>
+</objects>

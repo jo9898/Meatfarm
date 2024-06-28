@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Rendering.UI;
 
 public class GameState : MonoBehaviour
 {
@@ -88,6 +89,14 @@ public class GameState : MonoBehaviour
         if (index >= 0 && index < instance._questStates.Count)
         {
             instance._questStates[index] = match;
+        }
+
+
+        var uiPrefab = match.Quest.GetCompleteScreenPrefab();
+        if (uiPrefab!= null)
+        {
+            var root = FindObjectOfType<UiRoot>().transform;
+            Instantiate(uiPrefab, root);
         }
         Debug.Log("Quest" + questId + "completed");
     }
