@@ -1,5 +1,48 @@
-﻿#speaker: Conspiracy_Theorist
+﻿EXTERNAL addQuest(questName)
+VAR completed_ManipulateCanteen = false
+VAR completable_ManipulateCanteen = false
+VAR active_ManipulateCanteen = false
+VAR completed_FetchTinfoilHat = false
+VAR completable_FetchTinfoilHat = false
+VAR active_FetchTinfoilHat = false
+VAR completed_Nerdtalk = false
+VAR completable_Nerdtalk = false
+VAR active_Nerdtalk = false
+VAR completed_Nerdtalk2 = false
+VAR completable_Nerdtalk2 = false
+VAR active_Nerdtalk2 = false
+VAR completed_HideTheNob = false
+VAR completable_HideTheNob = false
+VAR active_HideTheNob = false
+VAR completed_CollectEvidence = false
+VAR completable_CollectEvidence = false
+VAR active_CollectEvidence = false
+VAR completed_Nerdtalk3 = false
+VAR completable_Nerdtalk3 = false
+VAR active_Nerdtalk3 = false
+VAR completed_StealAccesscard= false
+VAR completable_StealAccesscard = false
+VAR active_StealAccesscard = false
+#speaker: Conspiracy Theorist
 
+
+"You've got some news?"
+*   {not completed_Nerdtalk} -> FirstContact
+*   {completable_FetchTinfoilHat} [Yepp.]"Did you found the ITEM?"
+     -> ThinfoilProgress
+*   {completable_Nerdtalk2} -> RevealPlan
+*   -> NotReally
+*   {completable_Nerdtalk3} -> HintsOnPlan
+*   {active_StealAccesscard} -> Disaster
+
+    === NotReally ===
+
+*   Not really. I'm on my way again!
+    -> END
+
+
+    === FirstContact ===
+# addQuest Nerdtalk
 "Good evening, fellow prisoner!"
 *   Good evening.
     -> polite
@@ -82,7 +125,7 @@
 
 
     === Theories ===
-"First: did you feet something strange about the way the shady figurre in the lobby was talking, too? To many allusions, right?"
+"First: did you feet something strange about the way the shady figure in the lobby was talking, too? To many allusions, right?"
 *   Yep, his behaivor was suspicious.
     -> Exactly
 *   I do enjoy some poetic phrasing from time to time.
@@ -153,40 +196,41 @@
 
     === Planning ===
 "Consider this your test of worth. I reveal my plan to you if I know you're' with me. Now, Good Luck"
-# addQuest fetch tinfoil-hat
+# completeQuest Nerdtalk
+# addQuest FetchTinfoilHat
     -> END
 
 
 
 
 
-/*
-{QuestinProgress_fetch tinfoil-hat}
 
-"You're already back! Did you found the ITEM?"
+
+    === ThinfoilProgress ===
+
 *   Yes
-    -> Muhaha
+    -> Hehheh
 *   No
     -> bother
 
 
-    === Muhaha ===
+    === Hehheh ===
 "Yes! Thats it! No one will be able to control my thoughts now, hehheh!"
-# removeQuest fetch tinfoil-hat
+# addQuest Nerdtalk2
+# completeQuest FetchTinfoilHat
     -> END
 
 
     === bother ===
 "So, why do you bother me?"
     -> END
-*/
 
 
 
 
-/*
-{QuestDone_fetch tinfoil-hat}
 
+
+    === RevealPlan ===
 "Fellow Prisoner! As promissed I've worked out a Plan to level the ground for our escape! Are you with me?"
 *   Aye Son!
     -> Plan1
@@ -219,7 +263,7 @@
     === Plan5 ===
 "I leave the details to you. At last, your "aquisation skills" will be put to a test again. I was able to fetch the key for the lobby. Go and search for incriminating evidence!"
 *   Continue
-    -> Plan 6
+    -> Plan6
 
 
     === Plan6 ===
@@ -236,34 +280,57 @@
 
     === role ===
 "Oh Pinky, I am the brains of this plan! Now go and help me taking over the world tonight, hehheh!"
-#addQuest_manipulate canteen
-#addQuest_hide the Nob
-#addQuest_collect evidence
+#completeQuest Nerdtalk2
+#addQuest_ManipulateCanteen
+#addQuest_HideTheNob
+#addQuest_CollectEvidence
+#addQuest_Nerdtalk3
     -> END
-*/
 
 
 
 
 
-/*
-{QuestinProgress__manipulate canteen_hide the Nob_collect evidence}
 
+
+    === HintsOnPlan ===
 "Hey fellow! Where you able to complete the missions already?"
 *   [Continue]
     -> Choices
 
 
     === Choices ===
-+   How shall I manipulate the canteen?
++   {not completed_ManipulateCanteen} How shall I manipulate the canteen?
     -> Canteen
-+   Any ideas how to trap Nob?
++   {not completed_HideTheNob} Any ideas how to trap Nob?
     -> IdeasNob
-+   Where shall I look for evidence?
++   {not completed_CollectEvidence} Where shall I look for evidence?
     -> Evidence
+*   I'm done with everything!
+    -> DONE1
 *   Im on my way!
     -> OnMyWay
 
+
+    === DONE1 ===
+*   {completed_ManipulateCanteen} -> DONE2
+*   {not completed_ManipulateCanteen} -> YouForgot
+
+
+    === DONE2 ===
+*   {completed_HideTheNob} -> DONE3
+*   {not completed_HideTheNob} -> YouForgot
+
+
+    === DONE3 ===
+*   {completed_CollectEvidence} -> DONE4
+*   {not completed_CollectEvidence} -> YouForgot
+
+
+    === YouForgot ===
+"You forgot the most important part!"
+*   [Continue]"I want to work with professionals just once!"
+    -> Choices
 
     === Canteen ===
 "I assume, the best solution will be to hire the Bully. Bet, he can leak some distructive energy into the trough... You have to figurre out a way of communicating with him, though."
@@ -286,28 +353,25 @@
     === OnMyWay ===
 "Good luck then!"
     -> END
-*/
 
 
 
 
-/*
-{QuestDone_manipulate canteen_hide the Nob_collect evidence}
 
+    === DONE4 ===
 "Well that will be a nice mess. Hurry now! Lets put the evidence, the control starts in about a hour."
-#removeQuest_manipulate canteen
-#removeQuest_hide the Nob
-#removeQuest_collect evidence
-#addQuest_steal accesscard
+#completeQuestNerdtalk3
+#completeQuest_ManipulateCanteen
+#completeQuest_HideTheNob
+#completeQuest_CollectEvidence
+#addQuest_StealAccesscard
     -> END
-*/
 
 
 
 
-/*
-{QuestinProgress_steal accesscard}
 
+    === Disaster ===
 "Its a disaster! All their brains are hijacked! I try to figure out a way, to turn this situation around!"
 *   What can I do?
     -> WhatCanIDo
@@ -323,4 +387,6 @@
     === Bye ===
 "Hush!"
     -> END
-*/
+
+
+

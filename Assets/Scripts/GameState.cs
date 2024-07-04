@@ -14,9 +14,11 @@ public class GameState : MonoBehaviour
         if (!instance._items.TryAdd(type, amount))
         {
             instance._items[type] += amount;
+            Debug.Log(type + "collected");
         }
 
         QuestSystem.UpdateQuests();
+       
     }
 
     public static bool TryRemoveItem(ItemType type, uint amount)

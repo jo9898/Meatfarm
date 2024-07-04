@@ -1,5 +1,36 @@
+EXTERNAL addQuest(questName)
+VAR completed_Wolftalk = false
+VAR completable_Wolftalk = false
+VAR active_Wolftalk = false
+VAR completed_FindClarity = false
+VAR completable_FindClarity = false
+VAR active_FindClarity = false
+VAR completed_CheckCans = false
+VAR completable_CheckCans = false
+VAR active_CheckCans = false
 #speaker: Wolf
 
+
+"...he's quite the pest. You're angry, Dog's angry. Sounds like a quest!"
+*   -> FurtherQuestions
+*   {completed_FindClarity} WuffWuff!
+    -> Yeeeks 
+
+
+    === FurtherQuestions ===
+"So you do have questions? Why dont you find the answers yourself?"
+*   -> HelloSir
+* {completed_Wolftalk} I like the leading approach!
+    -> StepThrough
+
+
+    === StepThrough ===
+    "Step through the door, please!"
+    -> END
+
+
+    === HelloSir ===
+#addQuest Wolftalk
 "Hello Sir! Welcome to our happy, little farmstore!"
 *   Good evening!
     -> Hello
@@ -66,7 +97,7 @@
 
 
     === Worth_it ===
-"(whispering): Everybody falls for the jingle, ehehe"
+"- whispering - : Everybody falls for the jingle, ehehe"
 *   Continue
     -> Sign
 
@@ -137,5 +168,111 @@
 
 
     === questions ===
+#completeQuest Wolftalk
 "If you have any further questions - please - just ask."
+    -> END
+
+
+
+
+
+    === Yeeeks ===
+"YEEEEEEEKS!!"
+*   Time for the Jingle-man to mingle with his biggest fan's - FIST!
+    -> Please
+
+
+    === Please ===
+"P-P-PLEAAASE! I surrender! Let me explain! Ask me anything!"
+*   You bet I will.
+    -> Choices1
+
+
+    === Choices1 ===
+*   [Are you the scum, who kidnaped the theorist?] "I did't do anything like that! My job is just to lead people in."
+    -> WasntMe
+*   What is it, this factory is doing?
+    -> WhatsFactory
+*   How can we get out?
+    -> HowGetOut
+
+
+    === WasntMe ===
+*   Who took the theorist?
+    -> Theorist
+*   Your job? For whom are you working then?
+    -> WhoIsInCharge
+*   Back to other matters...
+    -> Choices1
+
+
+
+    === Theorist ===
+"I never witnessed how poeple where taken! They...disappear and that's when they call me, to put away the new cans of Dog Food."
+*   [So people really get turned into pedigrees here?] "There have been incidents...but its not the goal."
+    -> WasntMe
+
+
+    === WhoIsInCharge ===
+"If I would know, the situation would be so much easier to solve!"
+*   [Continue] "They communicate in messages, written in fine letters or short and descriptive via the speakers!"
+    -> WasntMe
+
+
+    === WhatsFactory ===
+"They are..experiementing. You saw the product, down in the lobby. It's not finished though."
+*   How do you know, it's not finished?
+    -> NotFinished
+
+
+    === NotFinished ===
+"Well...thats the leverage they have against me.. or do you thought, I'd stay, because I enjoy the place so much?"
+*   Yes, partially. All your allusions during that lobbytalk.. 
+    ->  Brother
+
+
+    === Brother ===
+"My motto is to always give 150%! But frankly they have my brother. Ether I hire more people every week, or he ends up on the conveyor-belt, too!" 
+*   Go on..
+    -> GoOn
+
+
+    === GoOn ===
+"They need to be discreet, while figuring out the right formular. So they are using this small business, with the friendly reception staff."
+*   And if the product is finished?
+    -> GoOn2
+
+
+    === GoOn2 ===
+"Afterwards they go into massproduction. At that point they will recruit in bigger scale, maybe human trade."
+*   [Continue] "And I'll lose my worth and wont be able to protect my brother anymore.."
+    -> Choices1
+
+
+    === HowGetOut ===
+"First, I go nowhere without my brother. Second - my hands are bound. If I'm getting too close to the cattle shed..."
+*   LANGUAGE!
+    -> HowGetOut2
+
+
+    === HowGetOut2 ===
+"I'm sorry, its a habit. If i'm getting too close, the bosses made clear, Lamb or I'll die. But maybe I can help you in another way."
+*   Thats the least you should do.
+    -> HowGetOut3
+
+    === HowGetOut3 ===
+"You're right. I think the theorist figured out a way to disrupt this whole operation. He's a threat to my bosses plans."
+*   "Is" ?
+    -> HowGetOut4
+
+
+    === HowGetOut4 ===
+"When I told you about the unfinished product....He might still be alive!"
+*   What? I thought of him in a bowl of my neighbour already!
+    -> HowGetOut5
+
+
+    === HowGetOut5 ===
+"Go to the long conveyor-belt and check the canns! I have to go back to work...good luck!"
+#addQuest CheckCans
     -> END

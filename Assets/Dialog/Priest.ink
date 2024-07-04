@@ -1,5 +1,20 @@
+EXTERNAL addQuest(questName)
+VAR completed_Priesttalk = false
+VAR completable_Priesttalk = false
+VAR active_Priesttalk = false
+VAR completed_Priesttalk2 = false
+VAR completable_Priesttalk2 = false
+VAR active_Priesttalk2 = false
+VAR completed_Nerdtalk3 = false
+VAR completable_Nerdtalk3 = false
+VAR active_Nerdtalk3 = false
 # speaker: Priest
 
+Divider
+* {completed_Nerdtalk3} -> NoCounting
+*  -> AnotherSheep
+
+    === AnotherSheep ===
  "Another lost sheep travelled the veal."
 *   [Continue] "Dont you worry, I provide guidance for all troubled minds!"
     -> Choices
@@ -8,47 +23,47 @@
 *   What is this place?
     -> WhatIsLocation
 +   I didn't expect to find a Priest in here. Who do you worship?
-    -> Alumminia
+    -> Alummina
 *   Why do you call me sheep?
     -> IntroductionPriest
-*   I like to chose my own path
+*   {not completed_Priesttalk} I like to chose my own path
     -> Horns 
 
 
 
-    === Alumminia ===
-"I serve Alumminia, the all reflecting. I have the honor to be chosen as her medium - though she could have chosen everyone!"
+    === Alummina ===
+"I serve Alummina, the all reflecting. I have the honor to be chosen as her medium - though she could have chosen everyone!"
 +   Whats this Goddess about?
-    -> Alumminia2
+    -> Alummina2
 +   Theres something else I wanted to ask...
     -> Choices
 
 
-    === Alumminia2 ===
+    === Alummina2 ===
 "Her omnisight grands great wisdom and she deflects all harm by those blessed by her."
 +   Sounds like the blessing grants you everything already? Whats left then?
-    -> Alumminia3
+    -> Alummina3
 +   Theres something else I wanted to ask...
     -> Choices
 
 
-    === Alumminia3 ===
+    === Alummina3 ===
 "You only gain with sacrifice, dear sheep. Her affection needs devotion. To finally bath in her sight, to be sheltered as a whole ..."
 +   Yes?
-    -> Alumminia4
+    -> Alummina4
 +   Theres something else I wanted to ask...
     -> Choices
 
 
-    === Alumminia4 ===
+    === Alummina4 ===
 " ...it requires you to face a test of devotion. Even I can tell you only as much."
 +   How many have bathed in her light yet?
-    -> Alumminia5
+    -> Alummina5
 +   Theres something else I wanted to ask...
     -> Choices
 
 
-    === Alumminia5 ===
+    === Alummina5 ===
 "Many! And there will be so many more!"
 +   [Continue] "You have the potential, too!"
     -> Choices
@@ -98,6 +113,7 @@
 
 
     === Horns ===
+#addQuest Priesttalk
 "Ah, so this sheep got some horns! Just what this place is lacking of! I must encourage your attitude!
 Such free spirit must dare to find clarity."
 *   This talk made me rather confused, i must admit.
@@ -115,20 +131,39 @@ Such free spirit must dare to find clarity."
 
 
     === Discription ===
+#completeQuest Priesttalk
+#addQuest SearchforClarity
 "Where water runs between your toes. Look out for the standing Lights, their warm embrace may guide your way. My disciple will await you there."
     -> END
 
 
     === DirectDiscription ===
+#completeQuest Priesttalk
+#addQuest SearchforClarity
 "Go to the showers and talk to Lamb!"
     -> END
 
-    // quest search for clARITY IS MISSING
+ 
 
 
-/*
-{QuestinProgress_steal_accesscard}
+    === NoCounting ===
+*   {not completed_Priesttalk2} -> Counting1
+*   {completed_Priesttalk2}  -> Reminder
 
+
+    === Reminder ===
+"The kitchen, dear sheep."
+*   Didn't even want to ask.
+    -> Hopp
+
+
+    === Hopp ===
+"Well, go on then."
+    -> END
+
+
+    === Counting1 ===
+#addQuest Priesttalk2
 "The sheep isn't counting sheeps no more."
 *   What happened? 
     -> WhatHappened
@@ -156,7 +191,7 @@ Such free spirit must dare to find clarity."
     === PassedOut ===
 "When the intruders where gone, your friend was too. You decided to pillow your head for the rest of the day then."
 *   [I certainly didn't decide anything.] "Still your path is unclear, then."
--> Cons2
+    -> Cons2
 
 
     === Vanish ===
@@ -172,7 +207,7 @@ Such free spirit must dare to find clarity."
 
 
     === Clean2 ===
-#addQuest_FindYourClarity
+#completeQuest Priesttalk2
+#addQuest FindClarity
 
     -> END
-*/

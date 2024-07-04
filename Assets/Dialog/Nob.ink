@@ -1,10 +1,32 @@
+EXTERNAL addQuest(questName)
+VAR completed_PlaceTheBait = false
+VAR completable_PlaceTheBait = false
+VAR active_PlaceTheBait = false
+VAR completed_Nerdtalk3 = false
+VAR completable_Nerdtalk3 = false
+VAR active_Nerdtalk3 = false
+VAR completed_HideTheNob = false
+VAR completable_HideTheNob = false
+VAR active_HideTheNob = false
+VAR completed_Nobtalk = false
+VAR completable_Nobtalk = false
+VAR active_Nobtalk = false
+VAR completed_Canscheck = false
+VAR completable_Canscheck = false
+VAR active_Canscheck = false
 #speaker: Nob
 
-/*
+"Howdy!"
+*   {not completed_Nobtalk}    -> Hello
+*   {not completed_Nerdtalk3}  -> Bait
+*   {completed_HideTheNob}  -> Omnomnom
+*   -> Choices
+
+
+    === Omnomnom ===
 "NOMNOMNOMNOMNOOMNOM - BURPS - OMNOMNOM...."
-* {finished_hide_the_Nob} Better dont wake sleeping dogs...
+*    Better don't wake sleeping dogs...
     -> SneakAway
-*   -> Hello1
 
 
     === SneakAway ===
@@ -12,11 +34,10 @@
     -> END
 
 
-    === Hello1 ===
-"Howdy!"
-*   -> Hello
-* {QuestinProgress_hide_the_Nob}{QuestDone_Bait} [Howdy!]
-    -> TheLure
+    === Bait ===
+* {completed_PlaceTheBait}  -> TheLure
+*   -> Choices
+    
 
 
     === TheLure ===
@@ -133,7 +154,6 @@
     === Hit3 ===
 "...AAAAAAAAARG!"
     -> END
-*/
 
 
 
@@ -143,6 +163,7 @@
 
 
     === Hello ===
+#addQuest NobTalk
 "Howdy!"
 *   Howdy! 
     -> Name
@@ -155,17 +176,37 @@
 
     === ok ===
 "Oh I lost mine.. well actually I got lost, myself."
+#completeQuest NobTalk
 *   [Continue]
     -> Choices
 
 
     === Choices ===
+*   {completed_Canscheck} Nob, let's get out of here!
+    -> OutOfHere
 *   How do you got here?
     -> HowGotHere
 *   Can you tell me anything about this place?
     -> AboutThisPlace
 *   I'm on my way!
     -> Howdy
+
+
+    === OutOfHere ===
+"Out? But the food..."
+*   I found some documents, they're cutting our rations!
+    -> OutOfHere2
+
+
+    === OutOfHere2 ===
+"I knew something's wrong all along! When do we start?"
+*   Be at the truck in the factory-hall, asap!
+    -> AlrightBoss
+
+
+    === AlrightBoss ===
+"Alright, Boss!"
+    -> END
 
 
     === HowGotHere ===

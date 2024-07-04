@@ -1,24 +1,51 @@
+EXTERNAL addQuest(questName)
+VAR completed_Bullytalk = false
+VAR completable_Bullytalk = false
+VAR active_Bullytalk = false
+VAR completed_Nerdtalk3 = false
+VAR completable_Nerdtalk3 = false
+VAR active_Nerdtalk3 = false
+VAR completed_ManipulateCanteen = false
+VAR completable_ManipulateCanteen = false
+VAR active_ManipulateCanteen = false
+VAR completed_StealAccesscard = false
+VAR completable_StealAccesscard = false
+VAR active_StealAccesscard = false
+VAR completed_Bullytalk2 = false
+VAR completable_Bullytalk2 = false
+VAR active_Bullytalk2 = false
+
 #speaker: Bully
 
-/*
-    === Language ===
+
+
+
+
 "..."
-*   -> Hello
-*   {QuestinProgress_manipulate canteen}  - show your teeth and growl -
-    -> Growl
-*   {QuestinProgress_manipulate canteen}  - try handsigns -
-    -> Handsign
-*   {QuestinProgress_manipulate canteen}  - hit him on the shoulder as hard as you can -
-    -> Hit
-*   {finished_manipulate_canteen} - give fistbump -
-    -> Fistbump
-*   {QuestinProgress_steal_accesscard} - give fistbump -
+*   {not completed_Bullytalk} -> Hello
+*   {completable_Nerdtalk3} -> CanteenTalk
+*   {completed_Nerdtalk3} - give fistbump -
     -> Unusual
-*/
+*   -> Bye
 
 
+
+    === CanteenTalk ===
+#addQuest Bullytalk2
 "..."
-*   ->  Unusual
+*   {not completed_Bullytalk2} - show your teeth and growl -
+    -> Growl
+*   {not completed_Bullytalk2} - try handsigns -
+    -> Handsign
+*   {not completed_Bullytalk2} - hit him on the shoulder as hard as you can -
+    -> Hit
+*   {completable_ManipulateCanteen} - give fistbump -
+    -> Fistbump
+
+
+
+
+
 
     === Unusual ===
 - The Bullys bump is ... weak! His face shows a unusual amount of expression. Like a mailbox, which hasn't been emptied for months. -
@@ -41,7 +68,7 @@
 
 
     === Apologies ===
-- The Bullys eyes narrowing until they are two slim gaps -
+- The Bully narrows his eyes, until they are two slim gaps -
 *   - Hit his shoulder -
     -> Shoulder
 
@@ -56,7 +83,7 @@
 
     -> END
 
-/*
+
     === Fistbump ===
 "Harhar, one day my Knuckles will blush you lot, harharharhar!"
 *   - better get away fast -
@@ -78,7 +105,7 @@
     === Outch ===
 - ...Anger. He punches you in the stomach. hard. -
 *   Ouuuuuutch!
-    -> Language
+    -> CanteenTalk
 
 
     === Handsign ===
@@ -96,7 +123,7 @@
     === Outch2 ===
 - Suddenly he reaches out, graps your fingers and bows them back a bit too much. A cat's no friend with a mouse. -
 *   Yeeeeksyoutch!
-    -> Language
+    -> CanteenTalk
 
 
     === Hit ===
@@ -138,6 +165,7 @@
 
 
     === Thoughts ===
+#completeQuest Bullytalk2
 - Communication with the Bully will include a lot of punching. Maybe you can try it at the trough -
     -> END
 
@@ -145,9 +173,8 @@
 
 
 
-
-
     === Hello ===
+# addQuest Bullytalk
 "..."
 *   Hello! Isn't this a friendly face!
     -> No
@@ -180,6 +207,7 @@
     === Talk ===
 "You talk too much!"
 *   Hey, have a nice day you guys! Bye!
+# completeQuest Bullytalk
     -> Bye
 
 

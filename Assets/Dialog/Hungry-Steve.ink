@@ -1,39 +1,46 @@
-﻿#speaker: Hungry-Steve
-VAR finished_apple = false
+﻿EXTERNAL addQuest(questName)
+#speaker: Hungry-Steve
+VAR completable_getmeapple = false
+VAR completed_getmeapple = false
+VAR active_getmeapple = false
 
-Hey, where you succesful?
-* {finished_apple} "I got you an delicious apple (wink-wink)!"
-    -> Finish
-*   -> Hello
-
-=== Hello ===
-Oh Hello Sir!
-*   Hello 
-    -> Top_Knot
-
-=== Top_Knot ===
-I have the feeling somethings brewing up and its getting me excited! But i dont have anything to eat!
-
-* "Whats brewing?"
-    -> AskWhatsBrewing
-* "Your hungry? Can i get you something?"
-    -> Apple
+"Wheres my apple??"
+*   -> Choice
+*{active_getmeapple} [Im on the run-Steve] "Hurry up, Granddad!"
+    -> Choice
 
 
-=== AskWhatsBrewing ===
-"I guess its all a Game"
-*Ha...ha....
-    -> Top_Knot
+    === Choice ===
+"Hello, im hungry steve!"
+*{completable_getmeapple} Heres your apple!
+    -> THANKS
+*{not completed_getmeapple}wanne quest
+    -> Quest
+*{completed_getmeapple} Just wanted to say: Your a big Bitch, Steve!
+    -> Bitch
+*   Bye Steve!
+    -> Bye
 
 
-=== Apple ===
-# addQuest apple
-"I dont wanne eat this "smoothy" they are serving. But ive heared an apple made its way into the kitchen! Could you fetch it for me?"
+    === Quest ===
+# addQuest getmeapple
+    "here you got one"
+*   bye Steve!
+    -> Bye
 
+
+    === Bye ===
+"bye granddad"
     -> END
 
-=== Finish ===
-# removeQuest apple
-"You did it!! hand over this delicous, crunchy peace of heaven.....ouh...hm. Is this a worm?? Oh my, doesnt get more fresh than that. Thank you so much!"
 
+    === THANKS ===
+# removeQuest getmeapple
+# giveItem getmeapple
+thank you
+    -> END
+
+
+    === Bitch ===
+your a Bitch, Granddad!
     -> END

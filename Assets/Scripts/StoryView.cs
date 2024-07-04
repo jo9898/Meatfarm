@@ -16,6 +16,9 @@ public class StoryView : MonoBehaviour
 {
     public static event Action<Story> OnCreateStory;
     private Story story;
+    public ItemType item;
+    public uint count;
+    
 
     [SerializeField] private RectTransform choiceHolder;
     [SerializeField] private TextMeshProUGUI storyText;
@@ -45,32 +48,44 @@ public class StoryView : MonoBehaviour
         {
             _quests.Add(collectionQuest);
         }
+       
     }
 
-    public void StartStory(TextAsset textAsset)
+    private void Update()
+    {
+        if(gameObject.activeSelf.Equals(true) && Input.GetKeyDown(KeyCode.Escape))
+        {
+            CloseStory();
+        }
+    }
+
+    public void StartStory(TextAsset textAsset, ItemType type, uint amount)
     {
         FindObjectOfType<PlayerInput>().enabled = false;
         gameObject.SetActive(true);
         story = new Story(textAsset.text);
 
+        item = type;
+        count = amount;
+
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-
+        
         foreach (var quest in GameState.GetCompletedQuests())
         {
-            story.variablesState["completed_"+quest.Quest.GetId().ToLower()] = true;
+            story.variablesState["completed_" + quest.Quest.GetId().ToLower()] = true;
         }
-
+        
         foreach (var quest in GameState.GetCompletableQuests())
         {
-            story.variablesState["completable" + quest.Quest.GetId().ToLower()] = true;
+            story.variablesState["completable_" + quest.Quest.GetId().ToLower()] = true;
         }
-
+        
         foreach (var quest in GameState.GetActiveQuests())
         {
             story.variablesState["active_" + quest.Quest.GetId().ToLower()] = true;
         }
-
+        
         ShowStory();
     }
 
@@ -119,7 +134,7 @@ public class StoryView : MonoBehaviour
     
     private void HandleTags()
     {
-        if (story.currentTags.Count < 1)
+        if (story.currentTags.Count <= 0)
         {
             return;
         }
@@ -146,6 +161,12 @@ public class StoryView : MonoBehaviour
                 var questName = currentTag.Split(' ')[1];
                 GameState.CompleteQuest(questName);
                 FindObjectOfType<QuestLogView>(true).ShowActiveQuests();
+            }
+
+            if (currentTag.Contains("giveItem"))
+            {
+                var questName = currentTag.Split(' ')[1];
+                GameState.AddItem(item, count);
             }
         }
     }
@@ -177,7 +198,7 @@ public class StoryView : MonoBehaviour
                 storyText.maxVisibleCharacters = text.Length;
                 yield break;
             }
-            yield return new WaitForSeconds(0.0025f);
+            yield return new WaitForSeconds(0.0020f);
 
         }
     }
@@ -202,10 +223,7 @@ public class StoryView : MonoBehaviour
             choice.Select();
         }
         choice.transform
-            .DOScale(1f, 0.4f)
-            .SetEase(Ease.OutBack)
-            .From(0f)
-            .SetDelay(index * 0.1f);
+            .DOScale(1f, 0.35f).SetEase(Ease.OutQuart).From(0f).SetDelay(index * 0.1f);
 
         var choiceText = choice.GetComponentInChildren<TextMeshProUGUI>();
         choiceText.text = text;
