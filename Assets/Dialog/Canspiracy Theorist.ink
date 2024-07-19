@@ -1,64 +1,69 @@
-﻿EXTERNAL addQuest(questName)
-VAR completed_Canstalk = false
-VAR completable_Canstalk = false
-VAR active_Canstalk = false
-VAR completed_Machine = false
-VAR completable_Machine = false
-VAR active_Machine = false
-VAR completed_Gate = false
-VAR completable_Gate = false
-VAR active_Gate = false
-VAR completed_Container = false
-VAR completable_Container = false
-VAR active_Container = false
-VAR completed_Truck = false
-VAR completable_Truck = false
-VAR active_Truck = false
-VAR completed_Room = false
-VAR completable_Room = false
-VAR active_Room = false
-VAR completed_Reunion = false
-VAR completable_Reunion = false
-VAR active_Reunion = false
-VAR completed_DoorCheck = false
-VAR completable_DoorCheck = false
-VAR active_DoorCheck = false
-VAR completed_Canscheck = false
-VAR completable_Canscheck = false
-VAR active_Canscheck = false
-#speaker: Canspiracy Theorist
+﻿
+VAR completed_canstalk = false
+VAR completable_canstalk = false
+VAR active_canstalk = false
+VAR completed_machine = false
+VAR completable_machine = false
+VAR active_machine = false
+VAR completed_gate = false
+VAR completable_gate = false
+VAR active_gate = false
+VAR completed_container = false
+VAR completable_container = false
+VAR active_container = false
+VAR completed_truck = false
+VAR completable_truck = false
+VAR active_truck = false
+VAR completed_room = false
+VAR completable_room = false
+VAR active_room = false
+VAR completed_reunion = false
+VAR completable_reunion = false
+VAR active_reunion = false
+VAR completed_doorcheck = false
+VAR completable_doorcheck = false
+VAR active_doorcheck = false
+VAR completed_canscheck = false
+VAR completable_canscheck = false
+VAR active_canscheck = false
+VAR completed_priesttalk2 = false
+VAR completable_priesttalk2 = false
+VAR active_priesttalk2 = false
+#speaker: Canspiracy-Theorist
 
 "Easy! I cant defend myself!"
-* {not completed_Canstalk}  -> Canstalk
-* {completed_DoorCheck} -> Check
-* {completed_Room} -> T
+* {not completed_canstalk}  -> Canstalk
+* {completed_doorcheck} -> Check
+* {completed_priesttalk2} -> OneLiner
+* {completed_room} -> T
 *   -> Choices
 
 
     === Check ===
-* {not completed_Canscheck} -> CentralOfEvil
-* {completed_Canscheck}  -> Tasks
+#speaker: Canspiracy Theorist
+* {not completed_canscheck} -> CentralOfEvil
+* {completed_canscheck}  -> Tasks
 
 
     === T ===
-* {completed_Truck} -> C
+* {completed_truck} -> C
 *   -> Choices
 
     === C ===
-* {completed_Container} -> G
+* {completed_container} -> G
 *   -> Choices
 
     === G ===
-* {completed_Gate} -> M
+* {completed_gate} -> M
 *   -> Choices
 
     === M ===
-{completed_Machine} -> Columns
+{completed_machine} -> Columns
 *   -> Choices
 
 
     === Choices ===
-
+#speaker: Canspiracy Theorist
 +   - Shake the can -
     -> Eyy 
 +   How's it in there?
@@ -68,7 +73,7 @@ VAR active_Canscheck = false
 
 
     === Eyy ===
-"Outch, PINKYYY! I wont stop calling you that, just because you're using brutal violence!"
+"Outch, PINKYYY! I won’t stop calling you that, just because you're using brutal violence!"
 *   [I just slipped, sorry.] "Well, what happens ones is forgotten when sun rises again.."
     -> Choices
 +   -> Eyy2
@@ -82,31 +87,31 @@ VAR active_Canscheck = false
 
 
     === Eyy3 ===
-"Okay! Your the brains! I concede!"
+"Okay! You’re the brains! I concede!"
 *   [Just a slippery can! I swear...] "...monkey!"
     -> Choices
 +   -> Choices
 
 
     === HowsIt ===
-"Honstly? Fine! I have a good armchair, no long walkways and you poked me some eyeholes."
+"Honestly? Fine! I have a good armchair, no long walkways and you poked me some eyeholes."
 *   Was that a thank you?
     -> HowsIt2
 
 
     === HowsIt2 ===
-"Well because you did it from outside, I have to take care not to cut myself everytime I want to watch out of the window."
-*   [Woopsi.] "I've been to good of a master."
+"Well because you did it from outside, I have to take care not to cut myself every time I want to watch out of the window."
+*   [Woopsi.] "I've been too good of a master."
     -> Choices
 
 
     === NotEvenBye ===
-"I dont want to go back in the pocket! It smells like old couch!"
+"I don’t want to go back in the pocket! It smells like old couch!"
     -> END
 
 
     === Canstalk ===
-#addQuest Canstalk
+#addQuest canstalk
 "YEEOUTCH! My head!"
 *   Dare to speak to me in that manner, can!
     -> IsThatYou
@@ -134,17 +139,18 @@ VAR active_Canscheck = false
 
     === TurnOnLight ===
 " Now, could you drop the act and turn on the light - 'PLEASE'?"
-*   I'm sorry, firend, but you've got canned.
+*   I'm sorry, friend, but you've got canned.
     -> Canned
 
 
     === Canned ===
-"....What? That's impossible. I feel, like I'm in perfekt condition...besides, you hitting me on the head.. I dont believe you!"
+"....What? That's impossible. I feel, like I'm in perfect condition...besides, you hitting me on the head.. I don’t believe you!"
 *   - Use a sharp edge to poke to holes into the can -
     -> ICanSee
 
 
     === ICanSee ===
+#speaker: Canspiracy Theorist
 "Hey, that's, Argh!"
 *   Now you should be able to have a look around.
     -> NoWay
@@ -170,31 +176,31 @@ VAR active_Canscheck = false
 
 
     === PointsOfInterest ===
+#addQuest machine
+#addQuest gate
+#addQuest truck
 "First, the big machine right next to us. Second, the gate behind. I can see a truck, too."
-#addQuest Machine
-#addQuest Gate
-#addQuest Truck
 *   Continue
     -> PointsOfInterest2
 
 
     === PointsOfInterest2 ===
+#addQuest room
 "Please check out, if there are any rooms behind the truck."
-#addQuest Rooms
 *   Continue
     -> PointsOfInterest3
     
     
     === PointsOfInterest3 ===
+#addQuest container
 " And, last but not least, in the far corner there are some Containers. I wonder what's hiding there!"
-#addQuest Containers
-*   Okay, i took my notes, please fasten you seatbells!
+*   Okay, i took my notes, please fasten your seatbelts!
     -> LetsGo
 
 
     === LetsGo ===
+#completeQuest canstalk
 "Please, try to be at least a little more serious about this. You're the one they haven't killed yet."
-#completeQuest Canstalk
     -> END
 
 
@@ -208,35 +214,36 @@ VAR active_Canscheck = false
 
 
     === Columns ===
-"The columns are in place. I'll now have to connect them and find a solution for that door. Im sure it'll be helpful."
+#speaker: Canspiracy Theorist
+"The columns are in place. I'll now have to connect them and find a solution for that door. I’m sure it'll be helpful."
 *   [Continue] "In the meantime, why don't you bring back this hat to Lamb. I got better protection now."
     -> LambHat
 
 
     === LambHat ===
-# removeQuest Truck
-# removeQuest Gate
-# removeQuest Room
-# removeQuest Container
-# removeQuest Machine
-# addQuest ReturnTheHat
+# removeQuest truck
+# removeQuest gate
+# removeQuest room
+# removeQuest container
+# removeQuest machine
+# addQuest returnthehat
 
     -> END
 
 
 
     === CentralOfEvil ===
-#addQuest Canscheck
+#addQuest canscheck
 "Here we have it! The central of evil!"
 *   [We made it!] "That was only the framework!"
     -> Plan
 
 
     === Plan ===
-#completeQuest Canscheck
-#addQuest BullysAndBarrels
-#addQuest PrepareTheTruck
-#addQuest SpreadWord
+#completeQuest canscheck
+#addQuest bullysandbarrels
+#addQuest preparethetruck
+#addQuest spreadword
 *   So what has to be done for our escape?
     -> Tasks
 
@@ -256,19 +263,19 @@ VAR active_Canscheck = false
 
 
     === Escape ===
-"It's fairly simple. You'll get the Bully to put some of this weird bubbling barrels under the roll of this meatmachine. Then hit the Big Red Button!"
-*   [That's my favourite part!] "Let it be our final greetings, hehheh!"
+"It's fairly simple. You'll get the Bully to put some of this weird bubbling barrels under the roll of this meat machine. Then hit the Big Red Button!"
+*   [That's my favorite part!] "Let it be our final greetings, hehheh!"
     -> Tasks
 
 
     === Truck ===
 "We need Keys, they should be in the factory. Probably you have to use your brush."
-*   [What about fuel?] "In the Nob-room should be some. Fetch it and prepare the truck. Dont forget to unlock the Gate from the controlroom."
+*   [What about fuel?] "In the Nob-room should be some. Fetch it and prepare the truck. Don’t forget to unlock the Gate from the control room."
     -> Tasks
 
 
     === Priest ===
-"She brought up all this talk about Alummina. She's projecting the path of ending as can-food as trancendence."
+"She brought up all this talk about Alummina. She's projecting the path of ending as can-food as transcendence."
 *   [Continue] "Don't trust her! She might be very close to our enemies."
     -> Tasks
 
@@ -278,7 +285,21 @@ VAR active_Canscheck = false
 *   [Continue] "They should be ready, when you start the Truck!"
     -> Tasks
 
+
     === StartEscape ===
 "Let's go then!"
     -> END
 
+
+    === OneLiner ===
+#speaker: Canspiracy Theorist
+"It's getting hot in here!!"
+*   Miss High-giene! You've made it!
+    -> YesNob
+
+
+    === YesNob ===
+#speaker High-giene staff
+"Yes, Nob helped me with that helmet! Now this thing can taste its own medicine!"
+*   Very well! Everybody! Let's go!!
+    -> END

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.Rendering.UI;
 
 public class GameState : MonoBehaviour
@@ -10,6 +11,12 @@ public class GameState : MonoBehaviour
 
     public static void AddItem(ItemType type, uint amount)
     {
+        if (amount == 0 || type == null)
+        {
+            return;
+        }
+        
+        
         var instance = FindObjectOfType<GameState>();
         if (!instance._items.TryAdd(type, amount))
         {
@@ -23,6 +30,11 @@ public class GameState : MonoBehaviour
 
     public static bool TryRemoveItem(ItemType type, uint amount)
     {
+
+        if (amount == 0 || type == null)
+        {
+            return true;
+        }
         var instance = FindObjectOfType<GameState>();
         if (instance._items.TryGetValue(type, out var ownedAmount))
         {
@@ -40,6 +52,11 @@ public class GameState : MonoBehaviour
 
     public static bool HasEnoughItems(ItemType type, uint amount)
     {
+        if (amount == 0 || type == null)
+        {
+            return true;
+        }
+
         var instance = FindObjectOfType<GameState>();
         if (instance._items.TryGetValue(type, out var ownedAmount))
         {
@@ -93,19 +110,42 @@ public class GameState : MonoBehaviour
             instance._questStates[index] = match;
         }
 
-
         var uiPrefab = match.Quest.GetCompleteScreenPrefab();
         if (uiPrefab!= null)
         {
             var root = FindObjectOfType<UiRoot>().transform;
             Instantiate(uiPrefab, root);
         }
+
+
+        var lockedGameObjects = FindObjectsOfType<LockedByQuest>(true);
+        foreach (var lockedObject in lockedGameObjects)
+        {
+            if (lockedObject.Quest.GetId() == questId)
+            {
+                lockedObject.gameObject.SetActive(true);
+                Destroy(lockedObject);
+            }
+        }
+
         Debug.Log("Quest" + questId + "completed");
+
+        var playable = match.Quest.GetCompletePlayable();
+        if (playable != null)
+        {
+            var director = FindObjectOfType<PlayableDirector>();
+            director.playableAsset = playable;
+            director.Play();
+        }
     }
     public static void MarkQuestCompletable(IQuest quest)
     {
         var instance = FindObjectOfType<GameState>();
         var match = instance._questStates.Find(q => q.Quest.GetId() == quest.GetId());
+        if (match.Status == QuestStatus.Completed)
+        {
+            return;
+        }
         match.Status = QuestStatus.Completable;
         var index = instance._questStates.FindIndex(q => q.Quest.GetId() == quest.GetId());
         if (index >= 0 && index < instance._questStates.Count)

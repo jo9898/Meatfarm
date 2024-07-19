@@ -1,39 +1,41 @@
-﻿EXTERNAL addQuest(questName)
-VAR completed_ManipulateCanteen = false
-VAR completable_ManipulateCanteen = false
-VAR active_ManipulateCanteen = false
-VAR completed_FetchTinfoilHat = false
-VAR completable_FetchTinfoilHat = false
-VAR active_FetchTinfoilHat = false
-VAR completed_Nerdtalk = false
-VAR completable_Nerdtalk = false
-VAR active_Nerdtalk = false
-VAR completed_Nerdtalk2 = false
-VAR completable_Nerdtalk2 = false
-VAR active_Nerdtalk2 = false
-VAR completed_HideTheNob = false
-VAR completable_HideTheNob = false
-VAR active_HideTheNob = false
-VAR completed_CollectEvidence = false
-VAR completable_CollectEvidence = false
-VAR active_CollectEvidence = false
-VAR completed_Nerdtalk3 = false
-VAR completable_Nerdtalk3 = false
-VAR active_Nerdtalk3 = false
-VAR completed_StealAccesscard= false
-VAR completable_StealAccesscard = false
-VAR active_StealAccesscard = false
-#speaker: Conspiracy Theorist
+VAR completed_manipulatecanteen = false
+VAR completable_manipulatecanteen = false
+VAR active_manipulatecanteen = false
+VAR completed_fetchtinfoilhat = false
+VAR completable_fetchtinfoilhat = false
+VAR active_fetchtinfoilhat = false
+VAR completed_nerdtalk = false
+VAR completable_nerdtalk = false
+VAR active_nerdtalk = false
+VAR completed_nerdtalk2 = false
+VAR completable_nerdtalk2 = false
+VAR active_nerdtalk2 = false
+VAR completed_hidethenob = false
+VAR completable_hidethenob = false
+VAR active_hidethenob = false
+VAR completed_collectevidence = false
+VAR completable_collectevidence = false
+VAR active_collectevidence = false
+VAR completed_nerdtalk3 = false
+VAR completable_nerdtalk3 = false
+VAR active_nerdtalk3 = false
+VAR completed_stealaccesscard = false
+VAR completable_stealaccesscard = false
+VAR active_stealaccesscard = false
+#speaker: Conspiracy-Theorist
 
 
 "You've got some news?"
-*   {not completed_Nerdtalk} -> FirstContact
-*   {completable_FetchTinfoilHat} [Yepp.]"Did you found the ITEM?"
+*   {not completed_nerdtalk} -> FirstContact
+*   {completable_fetchtinfoilhat} [Yepp.]"Did you found the ITEM?"
      -> ThinfoilProgress
-*   {completable_Nerdtalk2} -> RevealPlan
+*   {completed_fetchtinfoilhat} -> divider3 
 *   -> NotReally
-*   {completable_Nerdtalk3} -> HintsOnPlan
-*   {active_StealAccesscard} -> Disaster
+
+
+    === divider3 ===
+*   {completable_nerdtalk3} -> HintsOnPlan
+*   {completed_nerdtalk3} -> Disaster
 
     === NotReally ===
 
@@ -42,7 +44,7 @@ VAR active_StealAccesscard = false
 
 
     === FirstContact ===
-# addQuest Nerdtalk
+# addQuest nerdtalk
 "Good evening, fellow prisoner!"
 *   Good evening.
     -> polite
@@ -51,7 +53,7 @@ VAR active_StealAccesscard = false
 
 
     === intern ===
-"You really roll like my old man. Honest in heart, but blank in the bulb. You see, I am not wearing this jumpsuit voluntarily, nor am I an Intern. It's the same as yours by the way."
+"You really roll like my old man. Honest in heart, but blank in the bulb. You see, I am not wearing this jumpsuit voluntarily, nor am I an Intern."
 *   Continue
     -> polite
 
@@ -85,15 +87,15 @@ VAR active_StealAccesscard = false
 
 
     === Say_Anything ===
-"They say anything to get you in here, really. Point is, you wanne be anywhere, but here."
+"They say anything to get you in here, really. Point is, you wan ne be anywhere, but here."
 *   Yes, the interior is distasteful!
     -> NotWhatIMeant
-*   Whats so awful about this place?
+*   What’s so awful about this place?
     -> AboutPlace
 
 
     === NotWhatIMeant ===
-"Hehheh, good one! Ehm..., well, as a matter of fact, i quite like it."
+"Hehheh, good one! Ehm..., well, as a matter of fact, I quite like it."
 *   Sorry?
     -> Bunker
 
@@ -105,7 +107,7 @@ VAR active_StealAccesscard = false
 
 
     === AboutPlace ===
-"First: they throw you in here for any reason. Second: no one really is working here. So, I GUESS we fill a rather passive purpose, not to say: we are beeing kept!"
+"First: they throw you in here for any reason. Second: no one really is working here. So, I GUESS we fill a rather passive purpose, not to say: we are being kept!"
 *   Continue
     -> GoOn
 
@@ -125,8 +127,8 @@ VAR active_StealAccesscard = false
 
 
     === Theories ===
-"First: did you feet something strange about the way the shady figure in the lobby was talking, too? To many allusions, right?"
-*   Yep, his behaivor was suspicious.
+"First: did you feel something strange about the way the shady figure in the lobby was talking, too? To many allusions, right?"
+*   Yep, his behavior was suspicious.
     -> Exactly
 *   I do enjoy some poetic phrasing from time to time.
     -> GotThat
@@ -135,7 +137,7 @@ VAR active_StealAccesscard = false
     
 
     === GotThat ===
-"Hm, so you got him to sing the jingle, right? I catch my feed move to the rythm all the time... ."
+"Hm, so you got him to sing the jingle, right? I catch my feed move to the rhythm all the time... ."
 *   I think it's worth a lively whistle.
     -> Exactly
 
@@ -163,7 +165,7 @@ VAR active_StealAccesscard = false
 
 
     === Weird2 ===
-"Feels to me like someone really tries to paint a picture here.. Listen, This is supposed to be a factory for dog food production. But I didnt see ANY CATTLE."
+"Feels to me like someone really tries to paint a picture here.. Listen, This is supposed to be a factory for dog food production. But I didn’t see ANY CATTLE."
 *   Yiiiieks! They ARE using carrots for dog food!
     -> DontWanneDoThisAnymore
 *   You don't say...
@@ -177,7 +179,7 @@ VAR active_StealAccesscard = false
 
 
     === Yes ===
-"Yes, I do! Damn, get this whole moldy pizza...do you understand now how urgend the situation is?!"
+"Yes, I do! Damn, get this whole moldy pizza...do you understand now how urgent the situation is?!"
 *   Tell me how to get oooooooout!
     -> ToDo
 
@@ -189,6 +191,8 @@ VAR active_StealAccesscard = false
 
 
     === ToDo2 ===
+# completeQuest nerdtalk
+# addQuest fetchtinfoilhat
 "I was showering and I wasn't fast enough to catch it. You should start your search there."
 *   Wait, that's your big plan?
     -> Planning
@@ -196,8 +200,6 @@ VAR active_StealAccesscard = false
 
     === Planning ===
 "Consider this your test of worth. I reveal my plan to you if I know you're' with me. Now, Good Luck"
-# completeQuest Nerdtalk
-# addQuest FetchTinfoilHat
     -> END
 
 
@@ -215,10 +217,10 @@ VAR active_StealAccesscard = false
 
 
     === Hehheh ===
+# addQuest nerdtalk2
+# completeQuest fetchtinfoilhat
 "Yes! Thats it! No one will be able to control my thoughts now, hehheh!"
-# addQuest Nerdtalk2
-# completeQuest FetchTinfoilHat
-    -> END
+    -> RevealPlan
 
 
     === bother ===
@@ -231,25 +233,25 @@ VAR active_StealAccesscard = false
 
 
     === RevealPlan ===
-"Fellow Prisoner! As promissed I've worked out a Plan to level the ground for our escape! Are you with me?"
+"Fellow Prisoner! As promised I've worked out a Plan to level the ground for our escape! Are you with me?"
 *   Aye Son!
     -> Plan1
 
 
     === Plan1 ===
-"Listen then. Recently I got my hands on top secret Intel. Tomorrow morning the factory will be visited by people of hygiene control, to check quality standarts."
+"Listen then. Recently I got my hands on top secret Intel. Tomorrow morning the factory will be visited by people of hygiene control, to check quality standards."
 *   [Continue]
     -> Plan2
 
 
     === Plan2 ===
-"Their staff will be provided with accescards, to be able to move freely throughout the facility. Our goal is to get our hands on one of these!"
+"Their staff will be provided with access cards, to be able to move freely throughout the facility. Our goal is to get our hands on one of these!"
 *   [Continue]
     -> Plan3
 
 
     === Plan3 ===
-"The most adequate tool will be to cause a distraction! So your first mission will be to convince "Mr.Blushing Knuckles" to manipulate the outflow of the trough, in the canteen-area!"
+"The most adequate tool will be to cause a distraction! So your first mission will be to convince "Mr. Blushing Knuckles" to manipulate the outflow of the trough, in the canteen-area!"
 *   To cover the canteen in a tide of food!
     -> Plan4
 
@@ -261,7 +263,7 @@ VAR active_StealAccesscard = false
 
 
     === Plan5 ===
-"I leave the details to you. At last, your "aquisation skills" will be put to a test again. I was able to fetch the key for the lobby. Go and search for incriminating evidence!"
+"I leave the details to you. At last, your "acquisition skills" will be put to a test again. I was able to fetch the key for the lobby. Go and search for incriminating evidence!"
 *   Continue
     -> Plan6
 
@@ -279,12 +281,12 @@ VAR active_StealAccesscard = false
 
 
     === role ===
+#completeQuest nerdtalk2
+#addQuest manipulatecanteen
+#addQuest hidethenob
+#addQuest collectevidence
+#addQuest nerdtalk3
 "Oh Pinky, I am the brains of this plan! Now go and help me taking over the world tonight, hehheh!"
-#completeQuest Nerdtalk2
-#addQuest_ManipulateCanteen
-#addQuest_HideTheNob
-#addQuest_CollectEvidence
-#addQuest_Nerdtalk3
     -> END
 
 
@@ -300,52 +302,75 @@ VAR active_StealAccesscard = false
 
 
     === Choices ===
-+   {not completed_ManipulateCanteen} How shall I manipulate the canteen?
++   How shall I manipulate the canteen?
     -> Canteen
-+   {not completed_HideTheNob} Any ideas how to trap Nob?
++   Any ideas how to trap Nob?
     -> IdeasNob
-+   {not completed_CollectEvidence} Where shall I look for evidence?
++   Where shall I look for evidence?
     -> Evidence
-*   I'm done with everything!
-    -> DONE1
++   I want to give you report about the progress!
+    -> Progress
 *   Im on my way!
     -> OnMyWay
 
 
-    === DONE1 ===
-*   {completed_ManipulateCanteen} -> DONE2
-*   {not completed_ManipulateCanteen} -> YouForgot
-
-
-    === DONE2 ===
-*   {completed_HideTheNob} -> DONE3
-*   {not completed_HideTheNob} -> YouForgot
-
-
-    === DONE3 ===
-*   {completed_CollectEvidence} -> DONE4
-*   {not completed_CollectEvidence} -> YouForgot
-
-
-    === YouForgot ===
-"You forgot the most important part!"
-*   [Continue]"I want to work with professionals just once!"
+    === Progress ===
+*   {completable_manipulatecanteen}  The canteen will soon be a mess!
+    -> greatcanteen
+*   {completable_hidethenob}   The Nob is under control!
+    -> greatnob
+*   {completable_collectevidence}   I've got the material!
+    -> greatevidence
++   [About something else...]
     -> Choices
 
+
+    === greatcanteen ===
+#completeQuest manipulatecanteen
+    "Great Job!"
+*   [Continue] "Is there something else?"
+    -> Done1
+
+    === greatnob ===
+#completeQuest hidethenob
+    "Great Job!"
+*   [Continue] "Is there something else?"
+    -> Done1
+
+    === greatevidence ===
+#completeQuest collectevidence
+    "Great Job!"
+*   [Continue] "Is there something else?"
+    -> Done1
+
+    === Done1 ===
++   {completed_manipulatecanteen} -> Done2
++   {not completed_manipulatecanteen} -> Progress
+
+    === Done2 ===
++   {completed_hidethenob} -> Done3
++   {not completed_hidethenob} -> Progress
+
+
+    === Done3 ===
++   {completed_collectevidence} -> Done4
++   {not completed_collectevidence} -> Progress
+
+
     === Canteen ===
-"I assume, the best solution will be to hire the Bully. Bet, he can leak some distructive energy into the trough... You have to figurre out a way of communicating with him, though."
+"I assume, the best solution will be to hire the Bully. Bet, he can leak some destructive energy into the trough... You have to figure out a way of communicating with him, though."
 +   [Continue]
     -> Choices
 
 
     === IdeasNob ===
-"Hmm, at the end of the big factory gate should be a room thats lookable from outside. Maybe you can lure him inside somehow? I heared this boy used it before, to get his cut of the meal.."
+"Hmm, at the end of the big factory gate should be a room that's lockable from outside. Maybe you can lure him inside somehow? I heard this boy used it before, to get his cut of the meal.."
 +   [Continue]
     -> Choices
 
 
     === Evidence ===
-"Just turn that place upside down. Its not about leaving no marks. Search lockers, shelfs ... get creative!"
+"You've got the keys to go back to the lobby now. Search lockers, shelfs ... get creative!"
 +   [Continue]
     -> Choices
 
@@ -358,13 +383,11 @@ VAR active_StealAccesscard = false
 
 
 
-    === DONE4 ===
-"Well that will be a nice mess. Hurry now! Lets put the evidence, the control starts in about a hour."
-#completeQuestNerdtalk3
-#completeQuest_ManipulateCanteen
-#completeQuest_HideTheNob
-#completeQuest_CollectEvidence
-#addQuest_StealAccesscard
+    === Done4 ===
+#giveItem Apple
+#completeQuest nerdtalk3
+#addQuest stealaccesscard
+"Well that will be a nice mess. Hurry now! Let's put the evidence, the control starts in about a hour."
     -> END
 
 
@@ -372,21 +395,11 @@ VAR active_StealAccesscard = false
 
 
     === Disaster ===
-"Its a disaster! All their brains are hijacked! I try to figure out a way, to turn this situation around!"
-*   What can I do?
-    -> WhatCanIDo
-*   Bye
-    -> Bye
+"What are you waiting for?? To the kitchen!"
+*   Alright
+    -> goDis
 
 
-    === WhatCanIDo ===
-"Steal a card? Talk to someone? Create a wonder? I need to focus! Just do ... ANYTHING!"
+    === goDis ===
+"Let's end this!"
     -> END
-
-
-    === Bye ===
-"Hush!"
-    -> END
-
-
-

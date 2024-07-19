@@ -134,8 +134,9 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 47a2e4f0fe9ac8744a870da5da68683a, type: 2}
+  m_sharedMaterial: {fileID: 4983239093155715060, guid: 47a2e4f0fe9ac8744a870da5da68683a,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -159,8 +160,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 49.8
+  m_fontSizeBase: 49.8
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -293,6 +294,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   closeButton: {fileID: 4293574240015612426}
+  pauseScreen: {fileID: 2853088319129105782, guid: b198e634fa7be1946b9403f5e0dc360a,
+    type: 3}
 --- !u!1001 &396209727447654295
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -304,6 +307,23 @@ PrefabInstance:
     - target: {fileID: 1922273856668676617, guid: 6882b9446fd1ab744bdaf93d1d710c72,
         type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2034355245273528590, guid: 6882b9446fd1ab744bdaf93d1d710c72,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 47a2e4f0fe9ac8744a870da5da68683a,
+        type: 2}
+    - target: {fileID: 2034355245273528590, guid: 6882b9446fd1ab744bdaf93d1d710c72,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 4983239093155715060, guid: 47a2e4f0fe9ac8744a870da5da68683a,
+        type: 2}
+    - target: {fileID: 2034355245273528590, guid: 6882b9446fd1ab744bdaf93d1d710c72,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2493699020987015334, guid: 6882b9446fd1ab744bdaf93d1d710c72,
@@ -449,7 +469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8120bfb418466004684a20d1fe5d0f4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vcaPath: vca:Master
+  vcaPath: vca:/Master
 --- !u!1001 &3742258925039172031
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -469,6 +489,23 @@ PrefabInstance:
       value: 'MUSIC
 
 '
+      objectReference: {fileID: 0}
+    - target: {fileID: 2034355245273528590, guid: 6882b9446fd1ab744bdaf93d1d710c72,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 47a2e4f0fe9ac8744a870da5da68683a,
+        type: 2}
+    - target: {fileID: 2034355245273528590, guid: 6882b9446fd1ab744bdaf93d1d710c72,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 4983239093155715060, guid: 47a2e4f0fe9ac8744a870da5da68683a,
+        type: 2}
+    - target: {fileID: 2034355245273528590, guid: 6882b9446fd1ab744bdaf93d1d710c72,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2493699020987015334, guid: 6882b9446fd1ab744bdaf93d1d710c72,
         type: 3}
@@ -613,7 +650,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8120bfb418466004684a20d1fe5d0f4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vcaPath: vca:Music
+  vcaPath: vca:/Music
 --- !u!1001 &4678242143919574674
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -632,7 +669,7 @@ PrefabInstance:
     - target: {fileID: 6821051058151536353, guid: 819153425bc94894dac678466b742676,
         type: 3}
       propertyPath: m_Name
-      value: Textbutton
+      value: BacktoMenu
       objectReference: {fileID: 0}
     - target: {fileID: 8097215700431746551, guid: 819153425bc94894dac678466b742676,
         type: 3}
@@ -813,6 +850,23 @@ PrefabInstance:
 
 '
       objectReference: {fileID: 0}
+    - target: {fileID: 2034355245273528590, guid: 6882b9446fd1ab744bdaf93d1d710c72,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 47a2e4f0fe9ac8744a870da5da68683a,
+        type: 2}
+    - target: {fileID: 2034355245273528590, guid: 6882b9446fd1ab744bdaf93d1d710c72,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 4983239093155715060, guid: 47a2e4f0fe9ac8744a870da5da68683a,
+        type: 2}
+    - target: {fileID: 2034355245273528590, guid: 6882b9446fd1ab744bdaf93d1d710c72,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2493699020987015334, guid: 6882b9446fd1ab744bdaf93d1d710c72,
         type: 3}
       propertyPath: m_Pivot.x
@@ -950,7 +1004,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8120bfb418466004684a20d1fe5d0f4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vcaPath: vca:SFX
+  vcaPath: vca:/SFX
 --- !u!224 &7464404325746815828 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2493699020987015334, guid: 6882b9446fd1ab744bdaf93d1d710c72,

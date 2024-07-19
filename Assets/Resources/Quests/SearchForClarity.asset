@@ -10,9 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ed522d68c81c9543a97c4d32172f36d, type: 3}
-  m_Name: SearchForClarity
+  m_Name: searchforclarity
   m_EditorClassIdentifier: 
   displayName: Search for Clarity
-  requirements: []
+  requirements:
+  - type: {fileID: 11400000, guid: 123af6ed077c7cf418fe732d61311871, type: 2}
+    amount: 3
   isHidden: 0
   completeScreenPrefab: {fileID: 0}

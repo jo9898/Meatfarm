@@ -1,25 +1,25 @@
 ﻿EXTERNAL addQuest(questName)
-VAR completed_BullysAndBarrels = false
-VAR completable_BullysAndBarrels = false
-VAR active_BullysAndBarrels = false
-VAR completed_Bullytalk3 = false
-VAR completable_Bullytalk3 = false
-VAR active_Bullytalk3 = false
+VAR completed_bullysandbarrels = false
+VAR completable_bullysandbarrels = false
+VAR active_bullysandbarrels = false
+VAR completed_bullytalk3 = false
+VAR completable_bullytalk3 = false
+VAR active_bullytalk3 = false
 #speaker: Bully
 
 "..."
-*   {not completed_Bullytalk3} - give fistbump -
+*   {not completed_bullytalk3} - give fistbump -
     -> Divider
 *   -> Choices
 
 
     === Divider ===
-*   {not completed_BullysAndBarrels}  -> Barrels
+*   {not completed_bullysandbarrels}  -> Barrels
 *   ->  Choices
 
 
     === Barrels ===
-#addQuest Bullytalk3
+#addQuest bullytalk3
 "Harhar"
 *   I have a job for your knuckles.
     -> LetsGo
@@ -32,7 +32,7 @@ VAR active_Bullytalk3 = false
 
 
     === Right ===
-#completeQuest Bullytalk3
+#completeQuest bullytalk3
 - The Bully punches you against the shoulder - way to hard -
     -> END
 

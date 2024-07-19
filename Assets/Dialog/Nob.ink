@@ -1,25 +1,29 @@
 EXTERNAL addQuest(questName)
-VAR completed_PlaceTheBait = false
-VAR completable_PlaceTheBait = false
-VAR active_PlaceTheBait = false
-VAR completed_Nerdtalk3 = false
-VAR completable_Nerdtalk3 = false
-VAR active_Nerdtalk3 = false
-VAR completed_HideTheNob = false
-VAR completable_HideTheNob = false
-VAR active_HideTheNob = false
-VAR completed_Nobtalk = false
-VAR completable_Nobtalk = false
-VAR active_Nobtalk = false
-VAR completed_Canscheck = false
-VAR completable_Canscheck = false
-VAR active_Canscheck = false
+VAR completed_placethebait = false
+VAR completable_placethebait = false
+VAR active_placethebait = false
+VAR completed_nerdtalk3 = false
+VAR completable_nerdtalk3 = false
+VAR active_nerdtalk3 = false
+VAR completed_hidethenob = false
+VAR completable_hidethenob = false
+VAR active_hidethenob = false
+VAR completed_nobtalk = false
+VAR completable_nobtalk = false
+VAR active_nobtalk = false
+VAR completed_canscheck = false
+VAR completable_canscheck = false
+VAR active_canscheck = false
 #speaker: Nob
 
 "Howdy!"
-*   {not completed_Nobtalk}    -> Hello
-*   {not completed_Nerdtalk3}  -> Bait
-*   {completed_HideTheNob}  -> Omnomnom
+*   {not completed_nobtalk}    -> Hello
+*   {completed_hidethenob}  -> Omnomnom
+*   -> divider
+
+
+    === divider ===
+*   {not completed_nerdtalk3}  -> Bait
 *   -> Choices
 
 
@@ -35,7 +39,7 @@ VAR active_Canscheck = false
 
 
     === Bait ===
-* {completed_PlaceTheBait}  -> TheLure
+* {completed_placethebait}  -> TheLure
 *   -> Choices
     
 
@@ -53,7 +57,7 @@ VAR active_Canscheck = false
     -> TheLure
 
     === DumDum ===
-"Spare me, DumDum. I'm hungry. I cant listen when I'm hungry!"
+"Spare me, DumDum. I'm hungry. I can’t listen when I'm hungry!"
 *   Son, I'm hungry too!
     -> Oh
 
@@ -65,38 +69,38 @@ VAR active_Canscheck = false
 
 
     === Meal1 ===
-+   ... roastet meat with salt and pepper. 
++   ... roasted meat with salt and pepper. 
     -> Almost
-+   ... bruscetta with fresh tomatos and basil.
++   ... bruschetta with fresh tomatoes and basil.
     -> No
-+   ... honey-soaked chickenstrips with potatos.
++   ... honey-soaked chicken strips with potatoes.
     -> Oh2
 
 
     === Almost ===
-"Mh, thats good, but not what I crave for."
+"Mh, that’s good, but not what I crave for."
 +   It smells more like...
     -> Meal1
 
 
     === No ===
-"My stomach hasn't been insultet like that in a while!"
+"My stomach hasn't been insulted like that in a while!"
 +   It smells more like...
     -> Meal1
 
 
     === Oh2 ===
 "That's exactly what I dream about, these days!"
-*   Talking about dreams. In my last dream I tastet ...
+*   Talking about dreams. In my last dream I tasted ...
     -> Meal2
 
 
     === Meal2 ===
-+   ... ham - sugarglazed and roasted over the fire with some garlic-barguette!
++   ... ham - sugar glazed and roasted over the fire with some garlic-baguette!
     -> Oh3
 +   ... ratatouille served next to a medium-rare steak and potato-puree!
     -> Almost2
-+   ... fries with parsley-Mayonaise and cutlet!
++   ... fries with parsley-mayonnaise and cutlet!
     -> No2
 
 
@@ -108,7 +112,7 @@ VAR active_Canscheck = false
 
     === No2 ===
 "Bah, your ruining everything!"
-+   Wait! It tastet more like ...
++   Wait! It tasted more like ...
     -> Meal2
 
 
@@ -119,33 +123,34 @@ VAR active_Canscheck = false
 
 
     === Meal3 ===
-+   ...chillipeppers and chorizo!
++   ...chill peppers and chorizo!
     ->  Almost3
 +   ...anchovies, gyros and jelly beans!
     ->  Hit
-+   ... rosemary-potatos and chickenbreast!
++   ... rosemary-potatoes and chicken breast!
     ->  No3
 
 
     === Almost3 ===
-"Chorizo mmmh, but chillipeppers look like herbs to me!"
+"Chorizo mmmh, but chill peppers look like herbs to me!"
 +   The Pizza was still packed! Instead its topped with...
     -> Meal3
 
 
     === No3 ===
-"Hey, my dreams are holy ground! Dont play me as a fool!"
+"Hey, my dreams are holy ground! Don’t play me as a fool!"
 +   That was Lambs pizza! Yours is served with...
     -> Meal3
 
 
     === Hit ===
-"Yes, that's better then I could imagine! I AM HUNGRYYY!" I NEED FOOD! WHERES FOOD!?"
+"Yes, that's better than I could imagine! I AM HUNGRYYY!" I NEED FOOD! WHERES FOOD!?"
 *   It's an emergency! Gladly I have my emergency-stash.
     -> Hit2
 
 
     === Hit2 ===
+#giveItem NobHideTrigger
 "ROOOAAAAAAAAAAAA....!"
 *   Easy, you can have it! It's in the room, down the corridor!
     -> Hit3
@@ -163,26 +168,26 @@ VAR active_Canscheck = false
 
 
     === Hello ===
-#addQuest NobTalk
+#addQuest nobtalk
 "Howdy!"
 *   Howdy! 
     -> Name
 
 
     === Name ===
-"Nice to meet you! Im Nob! How is your name?"
+#completeQuest nobtalk
+"Nice to meet you! I’m Nob! How is your name?"
 *   You can call me Granddad.
     -> ok
 
     === ok ===
 "Oh I lost mine.. well actually I got lost, myself."
-#completeQuest NobTalk
 *   [Continue]
     -> Choices
 
 
     === Choices ===
-*   {completed_Canscheck} Nob, let's get out of here!
+*   {completed_canscheck} Nob, let's get out of here!
     -> OutOfHere
 *   How do you got here?
     -> HowGotHere
@@ -210,26 +215,26 @@ VAR active_Canscheck = false
 
 
     === HowGotHere ===
-"Oh, I dont know."
-*   Did you woke up from unconciousness?
-    -> Unconciousness
+"Oh, I don’t know."
+*   Did you woke up from unconsciousness?
+    -> Unconsciousness
 
 
-    === Unconciousness ===
+    === Unconsciousness ===
 "No"
 *   So, you were walking into the Lobby, like me?
     -> Choices2
 
 
     === Choices2 ===
-"Naaaa, i dont."
+"Naaaa, i don’t."
 *   How did you got here, then?
     -> Choices3
 
 
     === Choices3 ===
-"You know, i dont know.."
-*   [What you just said? I dont knew, but now I do!]
+"You know, i don’t know.."
+*   [What you just said? I don’t knew, but now I do!]
     -> Confused
 
 
@@ -258,8 +263,8 @@ VAR active_Canscheck = false
 
 
     === Else2 ===
-"Well, haven't you seen the wallpapers? It's what everbody is into, Dumdum!"
-*   I wasnt riding this trend lately.
+"Well, haven't you seen the wallpapers? It's what everybody is into, Dumdum!"
+*   I wasn’t riding this trend lately.
     -> See
 
 
@@ -271,7 +276,6 @@ VAR active_Canscheck = false
     === Howdy ===
 "Alright! Howdy then!"
     -> END
-
 
 
 

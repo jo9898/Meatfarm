@@ -10,9 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ed522d68c81c9543a97c4d32172f36d, type: 3}
-  m_Name: CollectEvidence
+  m_Name: collectevidence
   m_EditorClassIdentifier: 
-  displayName: Collect Evidence
-  requirements: []
+  displayName: Collect 3 Clues
+  requirements:
+  - type: {fileID: 11400000, guid: b396369478de1584f9eaed1b8bf82c6a, type: 2}
+    amount: 3
   isHidden: 0
   completeScreenPrefab: {fileID: 0}
+  hasDialog: 0
+  completePlayable: {fileID: 0}

@@ -10,7 +10,7 @@ public class QuestStatusView : MonoBehaviour
     public void Set(IQuest quest)
     {
         questStatusText.text = quest.GetDisplayName();
-        bool isFinished = GameState.GetCompletableQuests().Any(x => x.Quest.GetId() == quest.GetId());
-        finishableIndicator.SetActive(isFinished);
+        bool isCompletable = GameState.GetCompletableQuests().Any(x => x.Quest.GetId() == quest.GetId());
+        finishableIndicator.SetActive(isCompletable);
     }
 }

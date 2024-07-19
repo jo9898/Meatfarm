@@ -1,13 +1,13 @@
 ﻿EXTERNAL addQuest(questName)
-VAR completed_FindClarity = false
-VAR completable_FindClarity = false
-VAR active_FindClarity = false
-#speaker: Intercom
+VAR completed_findclarity = false
+VAR completable_findclarity = false
+VAR active_findclarity = false
+#speaker: Granddad
 
 "Please insert an accesscard to the console"
 *   I dont have an accesscard.
     -> GoAway
-* {completed_FindClarity} Insert accesscard
+* {completed_findclarity} Insert accesscard
     -> OpenUp
 
 
@@ -17,5 +17,7 @@ VAR active_FindClarity = false
 
 
     === OpenUp ===
-"Biep-Bup TSSssssssss..."
+#giveItem FactoryKey
+#completeQuest findclarity
+"Thank you. The Door is unlocked now."
     -> END

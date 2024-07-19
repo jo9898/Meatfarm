@@ -8,7 +8,7 @@
 
     === Choices ===
 "You're still angry?"
-*   Sure. But I aswell see your point.
+*   Sure. But I as well see your point.
     -> Escape
 
 

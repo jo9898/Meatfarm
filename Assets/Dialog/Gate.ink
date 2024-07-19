@@ -1,17 +1,17 @@
-﻿EXTERNAL addQuest(questName)
-VAR completed_Gate = false
-VAR completable_Gate = false
-VAR active_Gate = false
+﻿
+VAR completed_gate = false
+VAR completable_gate = false
+VAR active_gate = false
 #speaker: Granddad
 
 
 That scale is biiig!
-* {not completed_Gate} -> Dialog
+* {not completed_gate} -> Dialog
 *   -> Bye
 
     === Dialog ===
 #speaker: Canspiracy Theorist
-#completeQuest Gate
+#completeQuest gate
 "Seems sturdy. Probably its enhanced to keep people from escaping."
 *   [Continue] "I bet there is a switch nearby!"
     -> ByeBye

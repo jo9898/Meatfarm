@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="EncodableAsset" id="{ecdb9b17-6b3a-4e6d-a6c1-7cd6aebfc430}">
+		<property name="note" />
+		<property name="assetPath">
+			<value>Footsteps.rpp.link/</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{84fa4b84-f4b2-4178-9c73-227fd678a014}</destination>
+		</relationship>
+	</object>
+</objects>

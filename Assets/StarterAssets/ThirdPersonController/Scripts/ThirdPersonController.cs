@@ -97,6 +97,7 @@ namespace StarterAssets
         private int _animIDJump;
         private int _animIDFreeFall;
         private int _animIDMotionSpeed;
+       
 
 #if ENABLE_INPUT_SYSTEM 
         private PlayerInput _playerInput;
@@ -173,6 +174,7 @@ namespace StarterAssets
             _animIDJump = Animator.StringToHash("Jump");
             _animIDFreeFall = Animator.StringToHash("FreeFall");
             _animIDMotionSpeed = Animator.StringToHash("MotionSpeed");
+           
         }
 
         private void GroundedCheck()
@@ -306,10 +308,10 @@ namespace StarterAssets
                     _verticalVelocity = Mathf.Sqrt(JumpHeight * -2f * Gravity);
 
                     // update animator if using character
-                    if (_hasAnimator)
-                    {
-                        _animator.SetBool(_animIDJump, true);
-                    }
+                   // if (_hasAnimator)
+                    //{
+                      //  _animator.SetBool(_animIDJump, true);
+                    //}
                 }
 
                 // jump timeout
@@ -331,10 +333,10 @@ namespace StarterAssets
                 else
                 {
                     // update animator if using character
-                    if (_hasAnimator)
+                   /* if (_hasAnimator)
                     {
                         _animator.SetBool(_animIDFreeFall, true);
-                    }
+                    }*/
                 }
 
                 // if we are not grounded, do not jump

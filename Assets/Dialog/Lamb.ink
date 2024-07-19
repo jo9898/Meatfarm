@@ -1,45 +1,48 @@
-EXTERNAL addQuest(questName)
-VAR completed_PlaceTheBait = false
-VAR completable_PlaceTheBait = false
-VAR active_PlaceTheBait = false
-VAR completed_Nerdtalk3 = false
-VAR completable_Nerdtalk3 = false
-VAR active_Nerdtalk3 = false
-VAR completed_Nerdtalk2 = false
-VAR completable_Nerdtalk2 = false
-VAR active_Nerdtalk2 = false
-VAR completed_HideTheNob = false
-VAR completable_HideTheNob = false
-VAR active_HideTheNob = false
-VAR completed_FetchTinfoilhat = false
-VAR completable_FetchTinfoilhat = false
-VAR active_FetchTinfoilhat = false
-VAR completed_Lambtalk = false
-VAR completable_Lambtalk = false
-VAR active_Lambtalk = false
+
+VAR completed_placethebait = false
+VAR completable_placethebait = false
+VAR active_placethebait = false
+VAR completed_nerdtalk3 = false
+VAR completable_nerdtalk3 = false
+VAR active_nerdtalk3 = false
+VAR completed_nerdtalk2 = false
+VAR completable_nerdtalk2 = false
+VAR active_nerdtalk2 = false
+VAR completed_hidethenob = false
+VAR completable_hidethenob = false
+VAR active_hidethenob = false
+VAR completed_fetchtinfoilhat = false
+VAR completable_fetchtinfoilhat = false
+VAR active_fetchtinfoilhat = false
+VAR completed_lambtalk = false
+VAR completable_lambtalk = false
+VAR active_lambtalk = false
+VAR completed_searchforclarity = false
+VAR completable_searchforclarity = false
+VAR active_searchforclarity = false
 #speaker: Lamb
 
 
 "Willchoker!"
-*   {completed_Nerdtalk3} -> Willchoker
-*   -> ImBusy
+*   {completed_nerdtalk3} -> Willchoker
+*   {not completed_nerdtalk3} -> ImBusy
 
 
     === ImBusy ===
-"Haaa, can't you see I'm busy?"
-*   Continue
-    -> Choices
+*  {not completed_fetchtinfoilhat} [Continue]"Haaa, can't you see I'm busy? I'm on my search for clarity!" -> Choices
+*  {completed_searchforclarity} [Continue]"What is it?" -> Choices
+    
 
 
     === Choices ===
-*   Put that mop down before you poke someone's eye out!
-    -> Mop_Down
-+   {not completed_FetchTinfoilhat} Spotted any items through the holes in the floor?
++   {not completed_searchforclarity} Spotted any items in this ... mess?
     -> Items
 +   Hey, do you know anything about that strange woman with the hat of tinfoil?
     -> The_Priest
-*   {completed_Nerdtalk2} Hey, I want to talk about something else..
+*   {completed_nerdtalk2} Hey, I want to talk about something else..
     -> TalkAboutNob
+*   Bye
+    -> Bye2
 
 
     === Items ===
@@ -61,7 +64,9 @@ VAR active_Lambtalk = false
 *   Continue
     -> Items
 
-
+    === Bye2 ===
+"Wait! The priest wasn't asking for me, right?"
+    -> END
 
     === Request ===
 "You-Your Highness?! Are you sure?"
@@ -72,6 +77,7 @@ VAR active_Lambtalk = false
 
 
     === Thanks ===
+#giveItem Bait
 "Thank you for the message, now excuse me!"
     -> END
 
@@ -102,7 +108,7 @@ VAR active_Lambtalk = false
 
 
     === Joke ===
-"A Horse walks into a bar. The barman says,'funny! Never saw a lasagna walking into my bar!' So, the horse:'heh, never got a drink served by a heap of dogfood either!'"
+"A Horse walks into a bar. The barman says, 'funny! Never saw a lasagna walking into my bar!' So, the horse: 'heh, never got a drink served by a heap of dogfood either!'"
 +   Wait what?
     -> WaitWhat
 
@@ -120,19 +126,16 @@ VAR active_Lambtalk = false
 
 
 
-    === Mop_Down ===
-"Step back, i have to work"
-*   Okay, let's just have a small chitchat then.
-    -> Choices
+
 
 
 
 
 
     === TalkAboutNob ===
-*   {not completed_Lambtalk} Lets talk about Nob.
+*   {not completed_lambtalk} Lets talk about Nob.
     -> Nob
-+   {completed_Lambtalk} Where was that room again?
++   {completed_lambtalk} Where was that room again?
     -> FactoryRoom
 *   Hey, are you mad, because I gave that hat to the Conspiracy Theorist?
     -> Alummina
@@ -153,14 +156,14 @@ VAR active_Lambtalk = false
 
 
     === Nob ===
-"Argh! This plague! I dont like to talk about him!"
+"Argh! This plague! I don't like to talk about him!"
 *   Why not?
     -> HesJust
 
 
     === HesJust ===
 "I dont wanne bore you with my problems."
-*   I get some "I really dont wanne, but i wanne" vibes here.
+*   I get some "I really don't wan ne, but I wan ne" vibes here.
     -> Problems
 
 
@@ -179,36 +182,36 @@ VAR active_Lambtalk = false
 
 
     === Problems2 ===
-"When there's time for lunch he pushes away everybody, but the biggest. Domminating that trough like he's a boar in the puddle!"
-*   Son, i'm listening.
+"When there's time for lunch he pushes away everybody, but the biggest. Dominating that trough like he's a boar in the puddle!"
+*   Son, I'm listening.
     -> Problems3
 *   A buh buh buh
     -> Rude2
 
 
     === Rude2 ===
-"HEY! YOU wanted me to talk, so listen, turtelneck!"
+"HEY! YOU wanted me to talk, so listen, turtleneck!"
 *   Ouch!
     -> Problems3
 
     === Problems3 ===
 "Usually he's quite nice, but as soon as there's food on the plate... . Well long story short, I had to come up with a plan!"
-*   Thats right. Dont let people push you around!
+*   Thats right. Don't let people push you around!
     -> Problems4
 *   -Push him-
     -> What
 
 
     === What ===
-"Outch, what?..... Oh your a bad person. May Alumminia be generous with you!"
-*   Im sorry, with age came these uncontrolled movements you know? 
+"Outch, what?..... Oh your a bad person. May Alummina be generous with you!"
+*   I'm sorry, with age came these uncontrolled movements you know? 
     -> HmOkay
 *   -Push him again-
     -> THATSIT
 
 
     === THATSIT ===
-"You are no help for nobody! The day you reached retirement was a bless for you collegues and a curse for all others! Your ignorant, gave my hat away, pushing others around like you would mather! But YOU DONT!"
+"You are no help for nobody! The day you reached retirement was a bless for you colleagues and a curse for all others! Your ignorant, gave my hat away, pushing others around like you would matter! But YOU DONT!"
     -> END
 
 
@@ -225,8 +228,8 @@ VAR active_Lambtalk = false
 
 
     === Problems4 ===
-#addQuest Lambtalk
-"I started to collect leftovers where ever I found them. Now if im hungry, I just place them in the room, next to the factory entrance. Then I lock him up."
+#addQuest lambtalk
+"I started to collect leftovers where ever I found them. Now if I'm hungry, I just place them in the room, next to the factory entrance. Then I lock him up."
 *   Do you maybe have some leftovers for me? 
     -> TheTrick
 
@@ -234,11 +237,12 @@ VAR active_Lambtalk = false
     === TheTrick ===
 "Wait, what are you gonna do with that?"
 *   I'll lure him into the room, by myself, this time.
-    -> Susspicious
+    -> Suspicious
 
 
-    === Susspicious ===
-"Hm, you really havn't done anything to make me trust you. It would spare me the adrenalin to get caught though..."
+    === Suspicious ===
+#addQuest placethebait
+"Hm, you really haven't done anything to make me trust you. It would spare me the adrenalin to get caught though..."
 *   Hey, I know, you're a good person.
     -> GoodPerson
 *   See, you already gave the reason.
@@ -246,15 +250,13 @@ VAR active_Lambtalk = false
 
 
     === GoodPerson ===
+#addItem Bait
 "This..was actually a nice. Thank you. I share my baits with you."
-#completeQuest Lambtalk
-#addQuest PlaceTheBait
     -> END 
 
 
     === IGuess ===
-#completeQuest Lambtalk
-#addQuest PlaceTheBait
+#addItem Bait
 "Hm yeah. Here's the bait. Now go and do your work."
  
     -> END
@@ -267,8 +269,8 @@ VAR active_Lambtalk = false
 
 
     === Willchoker ===
-"A Willchoker! That's what is hunting my nightmares. To have no free will!"
-*   [Continue] "Damn, I miss my tinfoil hat! It would protect me from the Willchokers.."
+"A Will choker! That's what is hunting my nightmares. To have no free will!"
+*   [Continue] "Damn, I miss my tinfoil hat! It would protect me from the Will chokers.."
     -> Choices5
 
 
@@ -292,11 +294,9 @@ VAR active_Lambtalk = false
 *   [Continue] "Any more trash you wanne drop?"
     -> Choices5
 
-
     === Bye ===
 "May Alummina bless you pour soul"
     -> END
-
 
 
 

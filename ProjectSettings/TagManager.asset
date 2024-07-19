@@ -3,7 +3,16 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - CinemachineTarget
+  - Punchable
+  - Bully
+  - Priest
+  - Priestspawner
+  - Wood
+  - Concrete
+  - Ground
+  - Cans
   layers:
   - Default
   - TransparentFX
@@ -11,9 +20,9 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Wood
+  - Concrete
+  - Wet
   - 
   - 
   - 

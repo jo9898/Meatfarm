@@ -10,9 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ed522d68c81c9543a97c4d32172f36d, type: 3}
-  m_Name: CalculatedClarity
+  m_Name: calculatedclarity
   m_EditorClassIdentifier: 
-  displayName: Calculated Clarity
-  requirements: []
+  displayName: Solve 3 Wallpaper Riddles
+  requirements:
+  - type: {fileID: 11400000, guid: 743cac53ecf133d44b1b415781b59d60, type: 2}
+    amount: 1
+  - type: {fileID: 11400000, guid: 22659d494f4c547439ed844d891f1be7, type: 2}
+    amount: 1
+  - type: {fileID: 11400000, guid: 6c203122f5866844fb1a685f3d074a13, type: 2}
+    amount: 1
   isHidden: 0
   completeScreenPrefab: {fileID: 0}
+  hasDialog: 0
+  completePlayable: {fileID: 0}

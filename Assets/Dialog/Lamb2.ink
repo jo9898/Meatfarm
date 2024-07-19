@@ -1,13 +1,13 @@
-﻿EXTERNAL addQuest(questName)
-VAR completed_Lambtalk2 = false
-VAR completable_Lambtalk2 = false
-VAR active_Lambtalk2 = false
-VAR completed_ReturnTheHat = false
-VAR completable_ReturnTheHat = false
-VAR active_ReturnTheHat = false
-VAR completed_Canscheck = false
-VAR completable_Canscheck = false
-VAR active_Canscheck = false
+﻿
+VAR completed_lambtalk2 = false
+VAR completable_lambtalk2 = false
+VAR active_lambtalk2 = false
+VAR completed_returnthehat = false
+VAR completable_returnthehat = false
+VAR active_returnthehat = false
+VAR completed_canscheck = false
+VAR completable_canscheck = false
+VAR active_canscheck = false
 #speaker Lamb
 
 
@@ -15,7 +15,7 @@ VAR active_Canscheck = false
 
 
 Divider
-* {not completed_Lambtalk2} -> Reunion
+* {not completed_lambtalk2} -> Reunion
 *   -> Hello
 
 
@@ -26,7 +26,7 @@ Divider
 
 
     === Choices ===
-*   {completed_Canscheck}   Pack your hat, we're going!
+*   {completed_canscheck}   Pack your hat, we're going!
     -> Gathering
 *   Thank you. May you be very...reflective!
     -> Bye
@@ -47,12 +47,12 @@ Divider
 
     === AlumminasPraise ===
 "She told me, Alumminas bless is weak outside."
-*   I heared the Priestess lost Alumminas voice!["She did?? That would mean I can interpret Alumminas will by myself!"]
+*   I heard the Priestess lost Alumminas voice!["She did?? That would mean I can interpret Alumminas will by myself!"]
     -> Gathering3
 
 
     === Rebel ===
-"No, YOU'RE a lier!"
+"No, YOU'RE a liar!"
 *   No and I will give you reason to believe!
     -> AlumminasPraise 
 
@@ -69,7 +69,7 @@ Divider
 
 
     === Reunion ===
-#addQuest Reunion
+#addQuest reunion
 "Granddad."
 *   [Son] "What is it?"
     -> Choices6
@@ -82,29 +82,29 @@ Divider
 
 
     === TinfoilHat ===
+#completeQuest returnthehat
 "My hat! Now I am a whole disciple again! Thank you! So there is an upside about that theorist vanishing after all."
-#completeQuest Return The Hat
 *   Your welcome!
     -> TinfoilHat2
 
 
     === TinfoilHat2 === 
 #speaker Canspiracy Theorist 
-"Hey! Your unthankful boy! Do you even know, that hat has some actuall worth?"
+"Hey! Your unthankful boy! Do you even know, that hat has some actual worth?"
 *   [Continue]
     -> TinfoilHat5
 
 
     === TinfoilHat5 ===
 #speaker Lamb
-"Of all dire reflections, youuu reached trancendence?! Alumminas highest bless? I...want to bow and to laught at the same time! I will bow though..."
+"Of all dire reflections, youuu reached transcendence?! Alumminas highest bless? I...want to bow and to laugh at the same time! I will bow though..."
 *   [Continue]
     -> TinfoilHat6
 
 
     === TinfoilHat6 ===
 #speaker Canspiracy Theorist
-"Heh, yes. Please write this into my memoirs. Now, Lamb, listen .. deciple! I need you to go on .. a secret quest ... for calculated clarity!"
+"Heh, yes. Please write this into my memoirs. Now, Lamb, listen .. disciple! I need you to go on .. a secret quest ... for calculated clarity!"
 *   [Continue]
     -> Quest1
 
@@ -125,23 +125,39 @@ Divider
 
     === Quest3 ===
 #speaker Lamb
-"SOLVED! There is only one code regarding Alummina! You are required to decipher it for reaching trancendence! When your time comes, wander where word is spread without a sound!"
+"SOLVED! There is only one code regarding Alummina! You are required to decipher it for reaching transcendence! When your time comes, wander where word is spread without a sound!"
 *    [Continue]
     -> Quest4
 
 
     === Quest4 ===
-"Lines tell lies, but the shape will be truthfull. Uncloak three riddles and you're one step closer to shepards embrace."
+"Lines tell lies, but the shape will be truthful. Uncloak three riddles and you're one step closer to shepherds embrace."
 *   [Continue]
     -> Quest5
 
 
     === Quest5 ===
-#completeQuest Reunion
+#completeQuest reunion
 #speaker Canspiracy Theorist
-#addQuest CalculatedClarity
-"Deciple, you were heared. Words with no sound. The lines tell lies, but Shape will be truthful. Any ideas, Pinky?"
+#addQuest calculatedclarity
+"Disciple, you were heard. Words with no sound. The lines tell lies, but Shape will be truthful. Any ideas, Pinky?"
+*   I guess, the solution is found on the Wallpapers!
+    -> MyIdea
+
+
+    === MyIdea ===
+"That's....just what I thought too!"
+*   Oh really? That the numbers are hidden there?
+    -> MyIdea2
+
+
+    === MyIdea2 ===
+"Yes,yes. We have to look carefully. One number for each wallpaper. That was MY IDEA."
     -> END
+
+
+
+
 
 
 

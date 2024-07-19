@@ -1,19 +1,19 @@
 EXTERNAL addQuest(questName)
-VAR completed_Bullytalk = false
-VAR completable_Bullytalk = false
-VAR active_Bullytalk = false
-VAR completed_Nerdtalk3 = false
-VAR completable_Nerdtalk3 = false
-VAR active_Nerdtalk3 = false
-VAR completed_ManipulateCanteen = false
-VAR completable_ManipulateCanteen = false
-VAR active_ManipulateCanteen = false
-VAR completed_StealAccesscard = false
-VAR completable_StealAccesscard = false
-VAR active_StealAccesscard = false
-VAR completed_Bullytalk2 = false
-VAR completable_Bullytalk2 = false
-VAR active_Bullytalk2 = false
+VAR completed_bullytalk = false
+VAR completable_bullytalk = false
+VAR active_bullytalk = false
+VAR completed_nerdtalk3 = false
+VAR completable_nerdtalk3 = false
+VAR active_nerdtalk3 = false
+VAR completed_manipulatecanteen = false
+VAR completable_manipulatecanteen = false
+VAR active_manipulatecanteen = false
+VAR completed_stealaccesscard = false
+VAR completable_stealaccesscard = false
+VAR active_stealaccesscard = false
+VAR completed_bullytalk2 = false
+VAR completable_bullytalk2 = false
+VAR active_bullytalk2 = false
 
 #speaker: Bully
 
@@ -22,24 +22,24 @@ VAR active_Bullytalk2 = false
 
 
 "..."
-*   {not completed_Bullytalk} -> Hello
-*   {completable_Nerdtalk3} -> CanteenTalk
-*   {completed_Nerdtalk3} - give fistbump -
+*   {not completed_bullytalk} -> Hello
+*   {completable_nerdtalk3} -> CanteenTalk
+*   {completed_nerdtalk3} - give fist bump -
     -> Unusual
 *   -> Bye
 
 
 
     === CanteenTalk ===
-#addQuest Bullytalk2
+#addQuest bullytalk2
 "..."
-*   {not completed_Bullytalk2} - show your teeth and growl -
+*   {not completed_bullytalk2} - show your teeth and growl -
     -> Growl
-*   {not completed_Bullytalk2} - try handsigns -
+*   {not completed_bullytalk2} - try hand signs -
     -> Handsign
-*   {not completed_Bullytalk2} - hit him on the shoulder as hard as you can -
+*   {not completed_bullytalk2} - hit him on the shoulder as hard as you can -
     -> Hit
-*   {completable_ManipulateCanteen} - give fistbump -
+*   {completable_manipulatecanteen} - give fist bump -
     -> Fistbump
 
 
@@ -48,7 +48,7 @@ VAR active_Bullytalk2 = false
 
 
     === Unusual ===
-- The Bullys bump is ... weak! His face shows a unusual amount of expression. Like a mailbox, which hasn't been emptied for months. -
+- The Bully’s bump is ... weak! His face shows a unusual amount of expression. Like a mailbox, which hasn't been emptied for months. -
 *   Hey,... quite the view right? Keeps me busy too ..
     -> NaNoProblem
 
@@ -61,7 +61,7 @@ VAR active_Bullytalk2 = false
 
     === Unshaken ===
 "NO ONE CAN CROSS BULLYS MIND!"
-*   My apologies, i didn't ment it.
+*   My apologies, I didn't meant it.
     -> Apologies
 *   - Hit his shoulder -
     -> Shoulder
@@ -75,7 +75,7 @@ VAR active_Bullytalk2 = false
 
     === Shoulder ===
 "Punch, ... Har. Punch! In sleeping room, punch! Hay, Punch!!"
-*   [- He seems to be pretty shaken. -] - Maybe I should go and see what stired him up -
+*   [- He seems to be pretty shaken. -] - Maybe I should go and see what stirred him up -
     -> GoOn
 
 
@@ -91,13 +91,13 @@ VAR active_Bullytalk2 = false
 
 
     === Growl ===
-- You shudder, as you see a sudden sparkel in his eyes! Is this...empathy? 
+- You shudder, as you see a sudden sparkle in his eyes! Is this...empathy? 
 *   Continue to play the dominant ape.
     -> recognition
 
 
     === recognition ===
-- There it was again! This time you were watching his face intensivly. Like a blank slope of stone. You realise what you thought empathy is in real ...
+- There it was again! This time you were watching his face intensively. Like a blank slope of stone. You realize what you thought empathy is in real ...
 *   Continue
     -> Outch
 
@@ -109,7 +109,7 @@ VAR active_Bullytalk2 = false
 
 
     === Handsign ===
-- You remember, how you where communicating with your small granddaughter. You poke out two fingers, like the ears of a peacefully grazing bunny. Just if saying:"I come in peace."-
+- You remember, how you where communicating with your small granddaughter. You poke out two fingers, like the ears of a peacefully grazing bunny. Just if saying: "I come in peace."-
 *   [Continue]
     -> Handsign2
 
@@ -121,32 +121,32 @@ VAR active_Bullytalk2 = false
 
 
     === Outch2 ===
-- Suddenly he reaches out, graps your fingers and bows them back a bit too much. A cat's no friend with a mouse. -
+- Suddenly he reaches out, grabs your fingers and bows them back a bit too much. A cat's no friend with a mouse. -
 *   Yeeeeksyoutch!
     -> CanteenTalk
 
 
     === Hit ===
-- You swing your arm around like popeye and throw it against the Bullys shoulder, as hard as you can.-
+- You swing your arm around like popeye and throw it against the Bully’s shoulder, as hard as you can.-
 *   [Continue]
     -> HitReaction
 
 
     === HitReaction ===
-- You two stand there as the moment passes by. It felt like trying to hit through wood. Your hand starts aching, but the face infront of you shows no emotions ...
+- You two stand there as the moment passes by. It felt like trying to hit through wood. Your hand starts aching, but the face in front of you shows no emotions ...
 *   [Continue]
     -> Success
 
 
     === Success ===
-- ...until there's a change! The skin around the eyes is cutt in wrinkles. Like cracking earth, a smile appears and shows big teeth.  -
+- ...until there's a change! The skin around the eyes is cut in wrinkles. Like cracking earth, a smile appears and shows big teeth.  -
 *   [Continue]
     -> KnucklesHappy
 
 
     === KnucklesHappy ===
 "Your Knuckles happy? Harharhar!"
-*   Not really if im honest.
+*   Not really if I’m honest.
     -> Suspicious
 *   - punch again -
     -> Harharhar
@@ -159,14 +159,15 @@ VAR active_Bullytalk2 = false
 
 
     === Harharhar ===
-"Harharharharhar! Just punch! Dont know where go? Punch, yes! Harhar!"
+"Harharharharhar! Just punch! Don’t know where go? Punch, yes! Harhar!"
 *   - think about that for a moment -
     -> Thoughts
 
 
     === Thoughts ===
-#completeQuest Bullytalk2
-- Communication with the Bully will include a lot of punching. Maybe you can try it at the trough -
+#completeQuest bullytalk2
+#giveItem canteentrigger
+- Communication with the Bully will include a lot of punching. Maybe you can try punching the pipe at the trough? -
     -> END
 
 
@@ -174,7 +175,7 @@ VAR active_Bullytalk2 = false
 
 
     === Hello ===
-# addQuest Bullytalk
+# addQuest bullytalk
 "..."
 *   Hello! Isn't this a friendly face!
     -> No
@@ -205,15 +206,19 @@ VAR active_Bullytalk2 = false
 
 
     === Talk ===
+# completeQuest bullytalk
 "You talk too much!"
 *   Hey, have a nice day you guys! Bye!
-# completeQuest Bullytalk
     -> Bye
 
 
     === Bye ===
 "..."
 -> END
+
+
+
+
 
 
 

@@ -1,53 +1,55 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
-    [SerializeField] private GameObject PausePanel;
     [SerializeField] private Button continueButton;
-        
+    [SerializeField] private Button optionsButton;
+    [SerializeField] private OptionsMenu optionsMenuPrefab;
+
     private void Awake()
     {
-        PausePanel.SetActive(false);
-        continueButton.onClick.AddListener(() => SetPausedStatus(false));
-    }
-
-    private void OnEnable()
-    {
+        Pause();
+        continueButton.onClick.AddListener(Continue);
+        optionsButton.onClick.AddListener(OpenOptions);
         continueButton.Select();
     }
 
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Escape))
+        if (Input.GetButtonDown("Menu"))
         {
-            var wasPreviouslyPaused = PausePanel.activeSelf;
-            SetPausedStatus(!wasPreviouslyPaused);
-        }
-
-        if (PausePanel.activeInHierarchy)
-        {
-            if (EventSystem.current.currentSelectedGameObject == null)
-            {
-                continueButton.Select();
-            }
+            Continue();
         }
     }
 
-    private void SetPausedStatus(bool isPaused)
+    private void Pause()
     {
-        PausePanel.SetActive(isPaused);
-        Time.timeScale = isPaused ? 0 : 1;
-        Cursor.visible = isPaused;
-        Cursor.lockState = isPaused ? CursorLockMode.None : CursorLockMode.Locked;
+        Time.timeScale = 0;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
 
-        if (isPaused)
+    private void Continue()
+    {
+        Time.timeScale = 1;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        /* var instance = FindObjectOfType<StoryView>();
+        if (instance != null)
         {
-            continueButton.Select();
-        }
+            var NewButton = FindObjectOfType<Button>();
+           
+        }*/
+        Destroy(gameObject);
+    }
+
+    private void OpenOptions()
+    {
+        UiService.Open(optionsMenuPrefab.gameObject);
+        Destroy(gameObject);
     }
 }
-

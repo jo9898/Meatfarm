@@ -52,7 +52,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Scale: 1.1
-    - _Smothness: 0.92
+    - _Smothness: 0.12
     m_Colors:
     - _BottomColor: {r: 0.4433962, g: 0.39371246, b: 0.29978043, a: 0}
     - _TopColor: {r: 1, g: 0.92868227, b: 0.40251565, a: 0}

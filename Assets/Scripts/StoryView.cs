@@ -8,13 +8,13 @@ using Ink.Runtime;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.SearchService;
 using UnityEngine.UI;
 
 public class StoryView : MonoBehaviour
 {
-    public static event Action<Story> OnCreateStory;
     private Story story;
     public ItemType item;
     public uint count;
@@ -28,6 +28,8 @@ public class StoryView : MonoBehaviour
     [SerializeField] private List<SpeakerConfig> speakerConfigs;
     [SerializeField] private Image speakerImage;
 
+
+
     [Serializable]
     public class SpeakerConfig
     {
@@ -35,12 +37,15 @@ public class StoryView : MonoBehaviour
         public Sprite sprite;
     }
 
+    
     private List<IQuest> _quests;
+    private PlayerInput _playerInput;
 
     private void Awake()
     {
         DestroyOldChoices();
         gameObject.SetActive(false);
+        _playerInput = FindAnyObjectByType<PlayerInput>();
 
         CollectionQuest[] collectionQuests = Resources.LoadAll<CollectionQuest>("Quests");
         _quests = new List<IQuest>();
@@ -53,7 +58,7 @@ public class StoryView : MonoBehaviour
 
     private void Update()
     {
-        if(gameObject.activeSelf.Equals(true) && Input.GetKeyDown(KeyCode.Escape))
+        if (gameObject.activeSelf.Equals(true) && Input.GetKeyDown(KeyCode.Escape))
         {
             CloseStory();
         }
@@ -61,30 +66,18 @@ public class StoryView : MonoBehaviour
 
     public void StartStory(TextAsset textAsset, ItemType type, uint amount)
     {
-        FindObjectOfType<PlayerInput>().enabled = false;
-        gameObject.SetActive(true);
-        story = new Story(textAsset.text);
-
         item = type;
         count = amount;
 
+        normalHudGroup.SetActive(false);
+        _playerInput.currentActionMap = _playerInput.actions.FindActionMap("UI");
+        gameObject.SetActive(true);
+        story = new Story(textAsset.text);
+
+     
+
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-        
-        foreach (var quest in GameState.GetCompletedQuests())
-        {
-            story.variablesState["completed_" + quest.Quest.GetId().ToLower()] = true;
-        }
-        
-        foreach (var quest in GameState.GetCompletableQuests())
-        {
-            story.variablesState["completable_" + quest.Quest.GetId().ToLower()] = true;
-        }
-        
-        foreach (var quest in GameState.GetActiveQuests())
-        {
-            story.variablesState["active_" + quest.Quest.GetId().ToLower()] = true;
-        }
         
         ShowStory();
     }
@@ -94,7 +87,8 @@ public class StoryView : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
         gameObject.SetActive(false);
-        FindObjectOfType<PlayerInput>().enabled = true;
+        normalHudGroup.SetActive(true) ;
+        _playerInput.currentActionMap = _playerInput.actions.FindActionMap("Player");
     }
 
     private void ShowStory()
@@ -104,6 +98,7 @@ public class StoryView : MonoBehaviour
         // Read all the content until we can't continue any more
         while (story.canContinue)
         {
+            UpdateQuests();
             // Continue gets the next line of the story
             string text = story.Continue();
             // This removes any white space from the text.
@@ -167,6 +162,36 @@ public class StoryView : MonoBehaviour
             {
                 var questName = currentTag.Split(' ')[1];
                 GameState.AddItem(item, count);
+                FindObjectOfType<QuestLogView>(true).ShowActiveQuests();
+            }
+        }
+    }
+
+    private void UpdateQuests()
+    {
+        foreach (var quest in GameState.GetCompletedQuests())
+        {
+            var varName = "completed_" + quest.Quest.GetId().ToLower();
+            if (story.variablesState.Contains(varName))
+            {
+                story.variablesState["completed_" + quest.Quest.GetId().ToLower()] = true;
+            }
+        }
+        foreach (var quest in GameState.GetCompletableQuests())
+        {
+            var varName = "completable_" + quest.Quest.GetId().ToLower();
+            if (story.variablesState.Contains(varName))
+            {
+                story.variablesState["completable_" + quest.Quest.GetId().ToLower()] = true;
+            }
+        }
+
+        foreach (var quest in GameState.GetActiveQuests())
+        {
+            var varName = "active_" + quest.Quest.GetId().ToLower();
+            if (story.variablesState.Contains(varName))
+            {
+                story.variablesState["active_" + quest.Quest.GetId().ToLower()] = true;
             }
         }
     }
@@ -179,12 +204,12 @@ public class StoryView : MonoBehaviour
 
     private void CreateContentView(string text)
     {
-        {
-            var speaker = story.globalTags.FirstOrDefault(t => t.Contains("speaker"))?.Split(' ')[1];
-            speakerName.text = speaker;
-            speakerImage.sprite = GetSpeakerImage(speaker);
-            StartCoroutine(ShowTextLetterByLetter(text));
-        }
+    
+        var speaker = story.globalTags.FirstOrDefault(t => t.Contains("speaker"))?.Split(' ')[1];
+        speakerName.text = speaker;
+        speakerImage.sprite = GetSpeakerImage(speaker);
+        StartCoroutine(ShowTextLetterByLetter(text));
+    
     }
     IEnumerator ShowTextLetterByLetter(string text)
     {
@@ -229,5 +254,10 @@ public class StoryView : MonoBehaviour
         choiceText.text = text;
 
         return choice;
+    }
+
+    internal void CloseStory(TextAsset story)
+    {
+        throw new NotImplementedException();
     }
 }

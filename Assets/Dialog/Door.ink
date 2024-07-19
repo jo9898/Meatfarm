@@ -1,65 +1,48 @@
 ﻿EXTERNAL addQuest(questName)
-VAR completed_Room = false
-VAR completable_Room = false
-VAR active_Room = false
-VAR completed_Wallpaper1 = false
-VAR completable_Wallpaper1 = false
-VAR active_Wallpaper1 = false
-VAR completed_Wallpaper2 = false
-VAR completable_Wallpaper2 = false
-VAR active_Wallpaper2 = false
-VAR completed_Wallpaper3 = false
-VAR completable_Wallpaper3 = false
-VAR active_Wallpaper3 = false
-VAR completed_DoorCheck = false
-VAR completable_DoorCheck = false
-VAR active_DoorCheck = false
+VAR completed_room = false
+VAR completable_room = false
+VAR active_room = false
+VAR completed_wallpaper = false
+VAR completable_wallpaper = false
+VAR active_wallpaper = false
+VAR completed_doorcheck = false
+VAR completable_doorcheck = false
+VAR active_doorcheck = false
+VAR completed_calculatedclarity = false
+VAR completable_calculatedclarity = false
+VAR active_calculatedclarity = false
+
 #speaker: Granddad
 
 Another door. Looks important.
 
-* {completed_Room} -> WP1
-* {not completed_Room} -> Dialog
+* {completed_room} -> Door
+* {not completed_room} -> Dialog
 *   -> Bye
 
 
-    === WP1 ===
-Another door. Looks important.
-* {completed_Wallpaper1} -> WP2
-*   -> Bye
-
-
-    === WP2 ===
-Another door. Looks important.
-* {completed_Wallpaper2} -> WP3
-*   -> Bye
-
-
-    === WP3 ===
-Another door. Looks important.
-* {completed_Wallpaper3} -> Check
-*   -> Bye
-
-
-    === Check ===
-#addQuest DoorCheck
-* {not completed_DoorCheck} -> Open
+    === Door ===
+* {completed_calculatedclarity} We've solved all Wallpaperriddles!
+    -> Open
 *   -> Bye
 
     === Open ===
-#completeQuest DoorCheck
-*   Enter the combination 
+#completeQuest doorcheck
+There are still 9 ways to type it in, give me a moment.
+*   -enter the combination-
     -> OpenUp
 
 
     === OpenUp ===
+#giveItem ControlKey
 Sounds like it opened up!
     -> END
 
 
     === Dialog ===
 #speaker Canspiracy Theorist
-#completeQuest Room
+#completeQuest room
+#addQuest doorcheck
 "It's looked. Kick it open!"
 
 *   [Surprisingly a artificial knee doesn't provide superpowers..] "Looks like we need a combination, then."
@@ -72,5 +55,6 @@ Sounds like it opened up!
 
     === Bye ===
     #speaker: Granddad
+    Something's missing.
 
     -> END

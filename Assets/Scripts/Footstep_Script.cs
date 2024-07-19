@@ -1,13 +1,13 @@
-/*using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Footstep_Script : MonoBehaviour
 {
-    public AudioSource Audiosource;
+    public AudioSource AudioSource;
 
-    public AudioClip concrete;
-    public AudioClip Metall;
+    public AudioClip Concrete;
+    public AudioClip Wood;
     public AudioClip Hay;
 
     RaycastHit hit;
@@ -19,13 +19,13 @@ public class Footstep_Script : MonoBehaviour
     {
         if(Physics.Raycast(RayStart.position, RayStart.transform.up * -1, out hit, range, layerMask))
         {
-            if(hit.collider.CompareTag("concrete"))
+            if(hit.collider.CompareTag("Concrete"))
             {
-                PlayFootstepSoundL(concrete);
+                PlayFootstepSoundL(Concrete);
             }
-            if (hit.collider.CompareTag("Metall"))
+            if (hit.collider.CompareTag("Wood"))
             {
-                PlayFootstepSoundL(Metall);
+                PlayFootstepSoundL(Wood);
             }
             if (hit.collider.CompareTag("Hay"))
             {
@@ -46,5 +46,5 @@ public class Footstep_Script : MonoBehaviour
     {
         Debug.DrawRay(RayStart.position, RayStart.transform.up * range * -1, Color.green);
     }
-}*/
+} 
 

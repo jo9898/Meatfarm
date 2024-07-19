@@ -1,37 +1,32 @@
-EXTERNAL addQuest(questName)
-VAR completed_Wolftalk = false
-VAR completable_Wolftalk = false
-VAR active_Wolftalk = false
-VAR completed_FindClarity = false
-VAR completable_FindClarity = false
-VAR active_FindClarity = false
-VAR completed_CheckCans = false
-VAR completable_CheckCans = false
-VAR active_CheckCans = false
+VAR completed_wolftalk = false
+VAR completed_findclarity = false
+
 #speaker: Wolf
-
-
 "...he's quite the pest. You're angry, Dog's angry. Sounds like a quest!"
 *   -> FurtherQuestions
-*   {completed_FindClarity} WuffWuff!
+*   {completed_findclarity} WuffWuff!
     -> Yeeeks 
 
 
     === FurtherQuestions ===
-"So you do have questions? Why dont you find the answers yourself?"
-*   -> HelloSir
-* {completed_Wolftalk} I like the leading approach!
-    -> StepThrough
+"So you do have questions? Why don't you find the answers yourself?"
+*  {completed_wolftalk} -> StepThrough
+*  {not completed_wolftalk} -> HelloSir
 
 
     === StepThrough ===
-    "Step through the door, please!"
+* I like the leading approach!
+    -> StepThrough2
+
+
+    === StepThrough2 ===
+"Step through the door, please!"
     -> END
 
 
     === HelloSir ===
-#addQuest Wolftalk
-"Hello Sir! Welcome to our happy, little farmstore!"
+#addQuest wolftalk
+"Hello Sir! Welcome to our happy, little farm store!"
 *   Good evening!
     -> Hello
 *   I read about your job posting in the newspaper.
@@ -40,7 +35,7 @@ VAR active_CheckCans = false
 
     === Hello ===
 "How may I help you?"
-*   I read about your jobassignement in the newspaper.
+*   I read about your job assignment in the newspaper.
     -> jobPosting
 
 
@@ -48,7 +43,7 @@ VAR active_CheckCans = false
 "Is that so.. . Well, you seem to fit the requirements just fine! Actually we've been waiting EXACTLY for someone like you!"
 *   If I'm so suitable, maybe you want to hear something about myself-...
     -> Explain
-*   It wasnt actually mentioned what your company does.
+*   It wasn’t actually mentioned what your company does.
     -> Great_Company
 *   How much will I earn-...
     -> Explain
@@ -71,7 +66,7 @@ VAR active_CheckCans = false
 
     
     === Jingle ===
-"Ehem, sure *clears throat*: Come home tired, oh you wanne rest! Your dog is barking, he's quite the pest. You're angry, Dog's angry. Sounds like a quest."
+"Ehem, sure *clears throat*: Come home tired, oh you wan ne rest! Your dog is barking, he's quite the pest. You're angry, Dog's angry. Sounds like a quest."
 *   Continue
     -> Jingle2
 
@@ -84,7 +79,7 @@ VAR active_CheckCans = false
 
     === Jingle3 ===
 "...humane rations for a lioness. But, the food for your dog, simply is "Human's Best"!"
-*   'Clap Clap', really nice perfomance. 
+*   'Clap Clap', really nice performance. 
     -> Thanks
 *   I always was a big fan of jingles! You absolutely convinced me about this job!
     -> Worth_it
@@ -103,10 +98,10 @@ VAR active_CheckCans = false
 
 
     === Sign ===
-"And here we go! Just sign the contract here and ... here! I must confess you proved to be a excellent candidate and i am incredibly IMPRESSED by your performance!
+"And here we go! Just sign the contract here and ... here! I must confess you proved to be a excellent candidate and I am incredibly IMPRESSED by your performance!
 *    I barely said anything. What's your point?
     -> Convincing
-*   Ok, i'm signing
+*   Ok, I’m signing
     -> Contract
 
 
@@ -120,7 +115,7 @@ VAR active_CheckCans = false
 
 
     === Dogfood ===
-"Dont you worry about the funny smell! Besides, a luxery payment of 10.000 bucks a month - after four weeks as an intern - we offer accommodation and free to use showers as well!
+"Don’t you worry about the funny smell! Besides, a luxury payment of 10.000 bucks a month - after four weeks as an intern - we offer accommodation and free to use showers as well!
 *   Sounds pretty good, but there has to be a hook, right?
     -> Hook
 *   Ok, I'm signing
@@ -143,12 +138,13 @@ VAR active_CheckCans = false
     -> Contract
 
     === profession ===
-"Look, your scepticism tells me, this job will fit you so much! Why dont you take a peak into our factory?"
+"Look, your skepticism tells me, this job will fit you so much! Why don’t you take a peak into our factory?"
 *   Alright, I give you a chance to convince me.
     -> Contract
 
     === Contract ===
-"Great! The contract's to my right. If you want to get more familiar with our product, you're welcome to have a look around our small exhibition!"
+#completeQuest wolftalk
+"Great! If you want to get more familiar with our product, you're welcome to have a look around our small exhibition!"
 *   Continue
     -> Door
 
@@ -162,13 +158,12 @@ VAR active_CheckCans = false
 
 
     === cleaning ===
-"We care about our top of the line hygiene-standarts. Please just follow the protocol."
+"We care about our top of the line hygiene-standards. Please just follow the protocol."
 *   Continue
     -> questions
 
 
     === questions ===
-#completeQuest Wolftalk
 "If you have any further questions - please - just ask."
     -> END
 
@@ -189,7 +184,7 @@ VAR active_CheckCans = false
 
 
     === Choices1 ===
-*   [Are you the scum, who kidnaped the theorist?] "I did't do anything like that! My job is just to lead people in."
+*   [Are you the scum, who kidnaped the theorist?] "I didn't do anything like that! My job is just to lead people in."
     -> WasntMe
 *   What is it, this factory is doing?
     -> WhatsFactory
@@ -208,7 +203,7 @@ VAR active_CheckCans = false
 
 
     === Theorist ===
-"I never witnessed how poeple where taken! They...disappear and that's when they call me, to put away the new cans of Dog Food."
+"I never witnessed how people where taken! They...disappear and that's when they call me, to put away the new cans of Dog Food."
 *   [So people really get turned into pedigrees here?] "There have been incidents...but its not the goal."
     -> WasntMe
 
@@ -220,14 +215,14 @@ VAR active_CheckCans = false
 
 
     === WhatsFactory ===
-"They are..experiementing. You saw the product, down in the lobby. It's not finished though."
+"They are.. experimenting. You saw the product, down in the lobby. It's not finished though."
 *   How do you know, it's not finished?
     -> NotFinished
 
 
     === NotFinished ===
-"Well...thats the leverage they have against me.. or do you thought, I'd stay, because I enjoy the place so much?"
-*   Yes, partially. All your allusions during that lobbytalk.. 
+"Well...that’s the leverage they have against me.. or do you thought, I'd stay, because I enjoy the place so much?"
+*   Yes, partially. All your allusions during that lobby talk.. 
     ->  Brother
 
 
@@ -244,8 +239,8 @@ VAR active_CheckCans = false
 
 
     === GoOn2 ===
-"Afterwards they go into massproduction. At that point they will recruit in bigger scale, maybe human trade."
-*   [Continue] "And I'll lose my worth and wont be able to protect my brother anymore.."
+"Afterwards they go into mass production. At that point they will recruit in bigger scale, maybe human trade."
+*   [Continue] "And I'll lose my worth and won't be able to protect my brother anymore.."
     -> Choices1
 
 
@@ -256,7 +251,7 @@ VAR active_CheckCans = false
 
 
     === HowGetOut2 ===
-"I'm sorry, its a habit. If i'm getting too close, the bosses made clear, Lamb or I'll die. But maybe I can help you in another way."
+"I'm sorry, it’s a habit. If I'm getting too close, the bosses made clear, Lamb or I'll die. But maybe I can help you in another way."
 *   Thats the least you should do.
     -> HowGetOut3
 
@@ -268,11 +263,11 @@ VAR active_CheckCans = false
 
     === HowGetOut4 ===
 "When I told you about the unfinished product....He might still be alive!"
-*   What? I thought of him in a bowl of my neighbour already!
+*   What? I thought of him in a bowl of my neighbor already!
     -> HowGetOut5
 
 
     === HowGetOut5 ===
-"Go to the long conveyor-belt and check the canns! I have to go back to work...good luck!"
-#addQuest CheckCans
+#addQuest checkcans
+"Go to the long conveyor-belt and check the cans! I have to go back to work...good luck!"
     -> END

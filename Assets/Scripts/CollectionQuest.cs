@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 [CreateAssetMenu]
 public class CollectionQuest : ScriptableObject, IQuest
@@ -9,12 +10,23 @@ public class CollectionQuest : ScriptableObject, IQuest
     public List<ItemRequirement> requirements;
     public bool isHidden;    // hide this quest in the quest log UI
     public GameObject completeScreenPrefab; // This is null by default. Optionally: a screen
+    public bool hasDialog;
+    public PlayableAsset completePlayable;
+
+    public PlayableAsset GetCompletePlayable()
+    {
+        return completePlayable;
+    }
 
     public string GetId()
     {
         return name;
     }
 
+    public bool HasDialog()
+    {
+        return hasDialog;
+    }
     public bool IsHidden()
     {
         return isHidden;

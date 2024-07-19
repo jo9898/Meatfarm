@@ -5,18 +5,19 @@ using UnityEngine;
 public class StoryNPC : MonoBehaviour, IInteractable
 { 
     [SerializeField] private TextAsset story;
-    [SerializeField] public ItemType item;
+    [SerializeField] public ItemType type;
     [SerializeField] public uint amount;
 
 
-    public void Interact()
+        public void Interact()
     {
-       var storyView = FindObjectOfType<StoryView>(includeInactive: true);
+        var storyView = FindObjectOfType<StoryView>(includeInactive: true);
         if (storyView.isActiveAndEnabled)
         {
             return;     
-         }
+        }
 
-        storyView.StartStory(story, item, amount);
+        storyView.StartStory(story, type, amount);
     }
+   
 }
