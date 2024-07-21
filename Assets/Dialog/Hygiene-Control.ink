@@ -94,11 +94,11 @@ Divider
 
 
     === Unconcious ===
-"She's not moving, but I hear weak breathing from underneath the helmet"
+- She's not moving, but you hear weak breathing from underneath the helmet -
 *   Hopefully she can make it...
     -> Unconcious2
 
 
     === Unconcious2 ===
-"Lets carry on, we don't have time's short!"
+"Lets carry on, time's short!"
     -> END

@@ -197,7 +197,7 @@ Such free spirit must dare to find clarity."
 
 
     === Cons ===
-"You speak honest. saw you mingling around with this self-proclaimed detective."
+"You speak honest. Saw you mingling around with this self-proclaimed detective."
 *   [Continue]"Might interest you, that he's missing, then"
     -> Cons2
 
@@ -224,12 +224,13 @@ Such free spirit must dare to find clarity."
     === Clean ===
 #completeQuest stealaccesscard
 "It's time to be pilgrim again. Find your clarity. As things wash clean, so will your thoughts!"
-*   [Not this again..]"If you laid your unsettling temper to rest, point your nose toward the canteen. You're brush will graze full of satisfaction!"
+*   [Not this again..]
     -> Clean2
 
 
     === Clean2 ===
 #completeQuest priesttalk2
 #addQuest findclarity
+"If you've laid your unsettling temper to rest, point your nose toward the canteen. You're brush will graze full of satisfaction!"
 
     -> END

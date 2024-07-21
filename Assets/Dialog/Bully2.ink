@@ -14,7 +14,7 @@ VAR active_bullytalk3 = false
 
 
     === Divider ===
-*   {not completed_bullysandbarrels}  -> Barrels
+*   {active_bullysandbarrels}  -> Barrels
 *   ->  Choices
 
 
@@ -32,6 +32,7 @@ VAR active_bullytalk3 = false
 
 
     === Right ===
+#giveItem BarrelRDY
 #completeQuest bullytalk3
 - The Bully punches you against the shoulder - way to hard -
     -> END

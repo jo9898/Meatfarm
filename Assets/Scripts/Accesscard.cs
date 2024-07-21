@@ -13,11 +13,12 @@ public class Accesscard : MonoBehaviour
 
     public void Update()
     {
-        var storyView = FindObjectOfType<StoryView>();
+        var storyView = FindObjectOfType<StoryView>(includeInactive: true);
         if (storyView.isActiveAndEnabled)
         {
-            Storyview = true;
+            return;
         }
+        Storyview = false;
 
         if (GameState.HasEnoughItems(type, amount) && Storyview == false)
         {

@@ -11,7 +11,6 @@ It looks like it's born to quash!
 
 
     === Dialog ===
-#speaker: Canspiracy Theorist
 #completeQuest machine
 "The spikes on this heavy roll are leaving no room for speculation."
 *   [Continue] "Hard to believe, I would still talk to you, if they put me in there."
@@ -23,6 +22,6 @@ It looks like it's born to quash!
 
 
     === Bye ===
-    #speaker: Granddad
+
 
     -> END

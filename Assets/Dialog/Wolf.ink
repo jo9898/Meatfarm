@@ -1,11 +1,13 @@
 VAR completed_wolftalk = false
+VAR completed_wolftalk2 = false
 VAR completed_findclarity = false
+VAR completed_redbutton = false
 
 #speaker: Wolf
 "...he's quite the pest. You're angry, Dog's angry. Sounds like a quest!"
 *   -> FurtherQuestions
 *   {completed_findclarity} WuffWuff!
-    -> Yeeeks 
+    -> YeeeksSchleuse 
 
 
     === FurtherQuestions ===
@@ -171,7 +173,14 @@ VAR completed_findclarity = false
 
 
 
+
+    === YeeeksSchleuse ===
+*   {completed_wolftalk2} -> LastSchleuse
+*   -> Yeeeks
+
+
     === Yeeeks ===
+#addQuest wolftalk2
 "YEEEEEEEKS!!"
 *   Time for the Jingle-man to mingle with his biggest fan's - FIST!
     -> Please
@@ -268,6 +277,35 @@ VAR completed_findclarity = false
 
 
     === HowGetOut5 ===
+#completeQuest wolftalk2
+#giveItem Cansshaker
 #addQuest checkcans
 "Go to the long conveyor-belt and check the cans! I have to go back to work...good luck!"
+    -> END
+
+
+    === LastSchleuse ===
+*   {not completed_redbutton}   -> beforeEndtalk
+*   {completed_redbutton}       -> Endtalk
+
+
+    === beforeEndtalk ===
+"I'm just want to get out of here with my brother."
+*   I'm working on it!
+    -> beforeEndtalk2
+
+
+    === beforeEndtalk2 ===
+"Thank you, .... "
+    -> END
+
+
+    === Endtalk ===
+"Me and Lamb are reunited! Nothing can stop us now! Let's escape!"
+*   My speach!
+    -> beforeEndtalk2
+
+
+    === Endtalk2 ===
+"Wish I had a Granddad like you!"
     -> END

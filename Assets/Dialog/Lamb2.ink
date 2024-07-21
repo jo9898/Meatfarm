@@ -84,44 +84,15 @@ Divider
     === TinfoilHat ===
 #completeQuest returnthehat
 "My hat! Now I am a whole disciple again! Thank you! So there is an upside about that theorist vanishing after all."
-*   Your welcome!
-    -> TinfoilHat2
-
-
-    === TinfoilHat2 === 
-#speaker Canspiracy Theorist 
-"Hey! Your unthankful boy! Do you even know, that hat has some actual worth?"
-*   [Continue]
+*   The Theorist is now living as a can!
     -> TinfoilHat5
 
 
     === TinfoilHat5 ===
 #speaker Lamb
-"Of all dire reflections, youuu reached transcendence?! Alumminas highest bless? I...want to bow and to laugh at the same time! I will bow though..."
-*   [Continue]
-    -> TinfoilHat6
-
-
-    === TinfoilHat6 ===
-#speaker Canspiracy Theorist
-"Heh, yes. Please write this into my memoirs. Now, Lamb, listen .. disciple! I need you to go on .. a secret quest ... for calculated clarity!"
-*   [Continue]
-    -> Quest1
-
-
-    === Quest1 ===
-#speaker Lamb
-"Yes, oh protected one. I accept, hoping one day some of Alumminas glory reflects upon me!"
-*   [Continue]
-    -> Quest2
-
-
-    === Quest2 ===
-#speaker Canspiracy Theorist
-"I consider your plea. Now there's a combination required to open up a door in the factory..."
-*   [Continue]
+"Of all dire reflections, HEEEE reached transcendence?! Alumminas highest bless? I...want to bow and to laugh at the same time! I will bow though..."
+*   [I have to go and searrch this combination..]
     -> Quest3
-
 
     === Quest3 ===
 #speaker Lamb
@@ -132,27 +103,28 @@ Divider
 
     === Quest4 ===
 "Lines tell lies, but the shape will be truthful. Uncloak three riddles and you're one step closer to shepherds embrace."
-*   [Continue]
+*   [I guess, the solution is found on Wallpapers!]
     -> Quest5
 
 
     === Quest5 ===
 #completeQuest reunion
+#giveItem Wallpaperreader
 #speaker Canspiracy Theorist
 #addQuest calculatedclarity
-"Disciple, you were heard. Words with no sound. The lines tell lies, but Shape will be truthful. Any ideas, Pinky?"
-*   I guess, the solution is found on the Wallpapers!
+"That's....just what I thought too!"
+*   And then I have to point out the numbers
     -> MyIdea
 
 
     === MyIdea ===
-"That's....just what I thought too!"
-*   Oh really? That the numbers are hidden there?
+"Yes,yes. One number for each wallpaper. That was MY IDEA."
+*   And the one in the Lobby?
     -> MyIdea2
 
 
     === MyIdea2 ===
-"Yes,yes. We have to look carefully. One number for each wallpaper. That was MY IDEA."
+"That's just the manual! It's NOT part of this riddle, I'm sure!"
     -> END
 
 

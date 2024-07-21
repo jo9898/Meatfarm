@@ -3,18 +3,14 @@ VAR completed_container = false
 VAR completable_container = false
 VAR active_container = false
 #speaker: Canspiracy-Theorist
-#completeQuest container
 "Ha! My tinfoil hat!"
-*   [Continue] "Well, maybe its time, it finds its way back to his true owner..""
-    -> ByeBye
-
-    === ByeBye ===
-
-    -> END
+*   [Continue] 
+    -> Bye
 
 
     === Bye ===
-    #speaker: Granddad
+    #completeQuest container
     #giveItem Tinfoilhat
+    "Well, maybe its time, it finds its way back to his true owner.."
     
     -> END

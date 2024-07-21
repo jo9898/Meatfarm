@@ -12,7 +12,7 @@ VAR completed_calculatedclarity = false
 VAR completable_calculatedclarity = false
 VAR active_calculatedclarity = false
 
-#speaker: Granddad
+#speaker: Canspiracy-Theorist
 
 Another door. Looks important.
 
@@ -22,13 +22,14 @@ Another door. Looks important.
 
 
     === Door ===
-* {completed_calculatedclarity} We've solved all Wallpaperriddles!
+* {completable_calculatedclarity} We've solved all Wallpaperriddles!
     -> Open
 *   -> Bye
 
     === Open ===
 #completeQuest doorcheck
-There are still 9 ways to type it in, give me a moment.
+#completeQuest calculatedclarity
+There are still ways to type the combination..
 *   -enter the combination-
     -> OpenUp
 
@@ -44,7 +45,6 @@ Sounds like it opened up!
 #completeQuest room
 #addQuest doorcheck
 "It's looked. Kick it open!"
-
 *   [Surprisingly a artificial knee doesn't provide superpowers..] "Looks like we need a combination, then."
     -> ByeBye
 
@@ -54,7 +54,6 @@ Sounds like it opened up!
 
 
     === Bye ===
-    #speaker: Granddad
     Something's missing.
 
     -> END

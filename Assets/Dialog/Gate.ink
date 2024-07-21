@@ -12,12 +12,12 @@ That scale is biiig!
     === Dialog ===
 #speaker: Canspiracy Theorist
 #completeQuest gate
-"Seems sturdy. Probably its enhanced to keep people from escaping."
-*   [Continue] "I bet there is a switch nearby!"
+"Seems not too solid. With something big we could break through."
+*   [Continue]
     -> ByeBye
 
     === ByeBye ===
-
+"Wasn't there a truck around?"
     -> END
 
 

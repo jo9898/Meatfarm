@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ed522d68c81c9543a97c4d32172f36d, type: 3}
   m_Name: bullysandbarrels
   m_EditorClassIdentifier: 
-  displayName: Bullys&Barrels
-  requirements: []
+  displayName: Talk to Bully/ hit Barrels(3)
+  requirements:
+  - type: {fileID: 11400000, guid: c77808c992554b94cb46475a6a0965d8, type: 2}
+    amount: 3
   isHidden: 0
   completeScreenPrefab: {fileID: 0}
+  hasDialog: 0
+  completePlayable: {fileID: 0}

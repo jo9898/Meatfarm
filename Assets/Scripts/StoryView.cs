@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using DG.Tweening;
+using FMOD;
 using Ink.Runtime;
 using TMPro;
 using UnityEditor;

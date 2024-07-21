@@ -14,7 +14,7 @@ public class Punchable : MonoBehaviour, IInteractable
     private UnityEvent _onInteract;
 
     [SerializeField]
-    private string _playerAnimationTrigger = "Punch";
+    private string _playerAnimationTrigger = "Interact";
     public ItemType type;
     public uint amount = 1;
     public GameObject Bully;
@@ -52,7 +52,7 @@ public class Punchable : MonoBehaviour, IInteractable
         Bully.transform.position = Spawnpoint.transform.position;
         Bully.GetComponent<Animator>().SetTrigger("Punch");
         GameState.AddItem(stype, samount);
-        yield return new WaitForSeconds(7f);
+        yield return new WaitForSeconds(4.8f);
         Green.Play();
         Dust.Play();
         yield return new WaitForSeconds(3.5f);

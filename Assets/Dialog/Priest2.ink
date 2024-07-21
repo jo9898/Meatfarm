@@ -1,18 +1,18 @@
 ﻿EXTERNAL addQuest(questName)
-VAR completed_priesttalk2 = false
-VAR completable_priesttalk2 = false
-VAR active_priesttalk2 = false
+VAR completed_priesttalk3 = false
+VAR completable_priesttalk3 = false
+VAR active_priesttalk3 = false
+
+
+
+
+
+ * {not completed_priesttalk3}  -> Sinner
+ * {completed_priesttalk3} -> Explanation2
 
 #speaker Priest
-
-
-
- * {not completed_priesttalk2}  -> Sinner
- * {completed_priesttalk2} -> Explanation
-
-
     === Sinner ===
-#addQuest priesttalk2
+#addQuest priesttalk3
 "Sinner!"
 *   Oh, I didn't do anything!
     -> Talk1
@@ -32,22 +32,19 @@ VAR active_priesttalk2 = false
 
     === Talk3 ===
 "I never said that. You caused a famine among these pour souls and lit up the factory!"
-*   You never said, but I have proof! - pulling out theorist -
-    -> END
+*   You never said, but I have proof!
+    -> Talk4
 
 
     === Talk4 ===
-#speaker Canspiracy Theorist
-"Here I am! This person is as far from a holy priest as possible!"
-*   [Continue] 
+"Let's see"
+*   - Pull out Theorist -
     -> Talk5
 
-
     === Talk5 ===
-#speaker Priest
 "Success nr. One! There you are! An example of scientific strive! Give him back, old one!"
-*   No more religious talk?
-    -> Talk6
+*   Guess what. He thinks your an ALIEN!
+    -> Talk7
 
 
     === Talk6 ===
@@ -85,8 +82,8 @@ VAR active_priesttalk2 = false
     ->  Talk7
 
     === Talk7 ===
-#completeQuest priesttalk2
-#speaker Priest
+#completeQuest priesttalk3
+#giveItem AlienTrigger
 "Mwahahahaha, your bubbling flesh balls."
     -> END
 
@@ -100,6 +97,7 @@ VAR active_priesttalk2 = false
 
 
     === Explanation2 ===
+#addQuest defeat
 #speaker Alien-Priest
 "Visiting earth revealed a disappointment and a true love."
 *   Mrs. /Mr. Alien. Tell us about love.
@@ -123,7 +121,7 @@ VAR active_priesttalk2 = false
     === revealed ===
 "You Humans are unstable! You never managed to be consistent, always seeking foes around you - instead of preparing for forces, lurking outside your control and sight."
 *   [Continue]
-    -> revealed2
+    -> revealed3
 
 
     === revealed2 ===
@@ -134,8 +132,7 @@ VAR active_priesttalk2 = false
 
 
     === revealed3 ===
-#speaker Alien-Priest
-"Just another example how narcistic behavior negates unity. You're just afraid, because the humans on the other side..."
+"You're just afraid, because the humans on the other side..."
 *   [Continue]
     -> revealed4
 
@@ -178,11 +175,14 @@ VAR active_priesttalk2 = false
 
     === finale ===
 "Like I said, first several thousand cans turned bad."
-*   Continue
-    -> Enough
+* Bully: Punch!
+    -> hm
 
+    === hm ===
+#completeQuest defeat
 
-    === Enough ===
-#speaker High-gene Staff
-"ENOUGH OF THAT, EGGPLANT ABOMINATION!"
+"Hm?"
     -> END
+
+
+

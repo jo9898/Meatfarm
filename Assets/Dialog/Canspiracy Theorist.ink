@@ -26,23 +26,40 @@ VAR active_doorcheck = false
 VAR completed_canscheck = false
 VAR completable_canscheck = false
 VAR active_canscheck = false
-VAR completed_priesttalk2 = false
-VAR completable_priesttalk2 = false
-VAR active_priesttalk2 = false
+VAR completed_priesttalk3 = false
+VAR completable_priesttalk3 = false
+VAR active_priesttalk3 = false
+VAR completable_redbutton = false
 #speaker: Canspiracy-Theorist
 
 "Easy! I cant defend myself!"
 * {not completed_canstalk}  -> Canstalk
-* {completed_doorcheck} -> Check
-* {completed_priesttalk2} -> OneLiner
-* {completed_room} -> T
+* {completed_room} -> A2
 *   -> Choices
 
 
+    === A2 ===
+* {completed_priesttalk3} -> OneLiner
+* {completed_room} -> A1
+
+    === A1 ===
+* {completed_doorcheck} -> Check
+* {not completed_doorcheck} -> T
+
+
     === Check ===
-#speaker: Canspiracy Theorist
 * {not completed_canscheck} -> CentralOfEvil
-* {completed_canscheck}  -> Tasks
+* {completed_canscheck} -> A3
+
+    === A3 ===
+* {completable_redbutton} -> LetsPress
+*   -> Tasks
+
+
+
+
+
+
 
 
     === T ===
@@ -216,17 +233,13 @@ VAR active_priesttalk2 = false
     === Columns ===
 #speaker: Canspiracy Theorist
 "The columns are in place. I'll now have to connect them and find a solution for that door. I’m sure it'll be helpful."
-*   [Continue] "In the meantime, why don't you bring back this hat to Lamb. I got better protection now."
+*   [Continue] 
     -> LambHat
 
 
     === LambHat ===
-# removeQuest truck
-# removeQuest gate
-# removeQuest room
-# removeQuest container
-# removeQuest machine
-# addQuest returnthehat
+#addQuest returnthehat
+"In the meantime, why don't you bring back this hat to Lamb. I got better protection now."
 
     -> END
 
@@ -235,54 +248,58 @@ VAR active_priesttalk2 = false
     === CentralOfEvil ===
 #addQuest canscheck
 "Here we have it! The central of evil!"
-*   [We made it!] "That was only the framework!"
+*   [We made it!]
     -> Plan
 
 
     === Plan ===
+"That was only the framework!"
 #completeQuest canscheck
 #addQuest bullysandbarrels
 #addQuest preparethetruck
-#addQuest spreadword
+#addQuest redbutton
 *   So what has to be done for our escape?
     -> Tasks
 
 
     === Tasks ===
-*   Meater
+*   Meater & Truck
     -> Escape
-*   Truck   
-    -> Truck
 *   What about the priestess?
     -> Priest
 *   What about the others?
     -> Inform
-*   -> StartEscape
 *   Lets go!
     -> StartEscape
 
 
     === Escape ===
-"It's fairly simple. You'll get the Bully to put some of this weird bubbling barrels under the roll of this meat machine. Then hit the Big Red Button!"
-*   [That's my favorite part!] "Let it be our final greetings, hehheh!"
-    -> Tasks
+"It's fairly simple. You'll get the Bully to put some of this weird bubbling barrels under the roll of this meat machine."
+*   [Continue] 
+    -> Escape2
+
+
+    === Escape2 ===
+"Before you should fetch the keys of the truck. They should be somewhere in this room."
+*   [Continue]
+    -> Truck
 
 
     === Truck ===
-"We need Keys, they should be in the factory. Probably you have to use your brush."
-*   [What about fuel?] "In the Nob-room should be some. Fetch it and prepare the truck. Don’t forget to unlock the Gate from the control room."
+"Then hit the Big Red Button in the controlroom!"
+*   [That's my favorite part!]"Let it be our final greetings, hehheh!"
     -> Tasks
 
 
     === Priest ===
 "She brought up all this talk about Alummina. She's projecting the path of ending as can-food as transcendence."
-*   [Continue] "Don't trust her! She might be very close to our enemies."
+*   [Continue]"Don't trust her! She might be very close to our enemies."
     -> Tasks
 
 
     === Inform ===
-"Please, inform anyone else about our escape."
-*   [Continue] "They should be ready, when you start the Truck!"
+"If we destroy the meater it will produce enough noice to get everyones attention."
+*   [Continue]"They should be ready, when you start the Truck!"
     -> Tasks
 
 
@@ -292,14 +309,29 @@ VAR active_priesttalk2 = false
 
 
     === OneLiner ===
-#speaker: Canspiracy Theorist
+#speaker: Canspiracy-Theorist
 "It's getting hot in here!!"
-*   Miss High-giene! You've made it!
-    -> YesNob
+*   Let's goo!
+   -> YesLetsGo
 
+
+   === YesLetsGo ===
+Yes, Pinky!We did well today. Maybe tomorrow it will be the whole world, ehehehe."
+    -> END
 
     === YesNob ===
 #speaker High-giene staff
 "Yes, Nob helped me with that helmet! Now this thing can taste its own medicine!"
 *   Very well! Everybody! Let's go!!
+    -> END
+
+
+    === LetsPress ===
+"It's time to press the Button!!"
+*   Allright!
+    -> LetsPress2
+
+
+    === LetsPress2 ===
+"I'm alreeady smelling the burn...oh no, it's myself!"
     -> END

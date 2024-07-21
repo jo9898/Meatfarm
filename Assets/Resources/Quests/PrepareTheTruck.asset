@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ed522d68c81c9543a97c4d32172f36d, type: 3}
   m_Name: preparethetruck
   m_EditorClassIdentifier: 
-  displayName: Prepare The Truck
-  requirements: []
+  displayName: Fetch Key's
+  requirements:
+  - type: {fileID: 11400000, guid: 9cdaa5b3e86eb3740a528eac60ac6eb1, type: 2}
+    amount: 1
   isHidden: 0
   completeScreenPrefab: {fileID: 0}
+  hasDialog: 0
+  completePlayable: {fileID: 0}

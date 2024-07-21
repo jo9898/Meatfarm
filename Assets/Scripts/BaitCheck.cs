@@ -27,7 +27,7 @@ public class BaitCheck : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         Instantiate(Bait, Spawner.transform.position, Spawner.transform.rotation);
         yield return new WaitForSeconds(0.1f);
-        Destroy(this.gameObject);
+        Destroy(this);
     }
 
 }
