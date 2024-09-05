@@ -17,7 +17,6 @@ public class ShowerEvent : MonoBehaviour
 
     public void Go()
     {
-        Shower = FindObjectOfType<ParticleSystem>(Shower);
         StartCoroutine(ShowerProcess());
     }
     IEnumerator ShowerProcess()

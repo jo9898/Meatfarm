@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: fa7f6be4a0dcce44886bd7f2244861e1
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _requiredItem: {instanceID: 0}
+  - Spawnpoint: {instanceID: 0}
+  - Lamb: {instanceID: 0}
+  - screen: {instanceID: 0}
+  - Spawner: {instanceID: 0}
+  - Broom: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
